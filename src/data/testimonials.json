@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Williams",
+    "rating": 5,
+    "comment": "Absolutely stunning craftsmanship! My engagement ring exceeded all expectations. The attention to detail is remarkable.",
+    "location": "New York",
+    "avatar": "https://picsum.photos/80/80?random=101"
+  },
+  {
+    "id": 2,
+    "name": "Michael Chen",
+    "rating": 5,
+    "comment": "Purchased a diamond necklace for my wife's anniversary. The quality is exceptional and the service was outstanding.",
+    "location": "California",
+    "avatar": "https://picsum.photos/80/80?random=102"
+  },
+  {
+    "id": 3,
+    "name": "Emma Thompson",
+    "rating": 5,
+    "comment": "I've been a customer for years. Their pieces are timeless and the craftsmanship is unparalleled. Highly recommended!",
+    "location": "London",
+    "avatar": "https://picsum.photos/80/80?random=103"
+  },
+  {
+    "id": 4,
+    "name": "David Rodriguez",
+    "rating": 5,
+    "comment": "Custom designed a ring for my proposal. The team was incredibly helpful and the final product was perfect.",
+    "location": "Texas",
+    "avatar": "https://picsum.photos/80/80?random=104"
+  }
+]

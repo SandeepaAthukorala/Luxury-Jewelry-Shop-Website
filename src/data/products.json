@@ -1,0 +1,107 @@
+[
+  {
+    "id": 1,
+    "name": "Diamond Eternal Ring",
+    "image": "https://picsum.photos/400/400?random=1",
+    "category": "rings",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "Pearl Elegance Necklace",
+    "image": "https://picsum.photos/400/400?random=2",
+    "category": "necklaces",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "Sapphire Drop Earrings",
+    "image": "https://picsum.photos/400/400?random=3",
+    "category": "earrings",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "name": "Rose Gold Tennis Bracelet",
+    "image": "https://picsum.photos/400/400?random=4",
+    "category": "bracelets",
+    "featured": true
+  },
+  {
+    "id": 5,
+    "name": "Emerald Heart Pendant",
+    "image": "https://picsum.photos/400/400?random=5",
+    "category": "pendants",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "name": "Classic Gold Wedding Band",
+    "image": "https://picsum.photos/400/400?random=6",
+    "category": "rings",
+    "featured": true
+  },
+  {
+    "id": 7,
+    "name": "Silver Chain Necklace",
+    "image": "https://picsum.photos/400/400?random=7",
+    "category": "chain",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "name": "Gold Bangle Set",
+    "image": "https://picsum.photos/400/400?random=8",
+    "category": "bangles",
+    "featured": true
+  },
+  {
+    "id": 9,
+    "name": "Diamond Solitaire Ring",
+    "image": "https://picsum.photos/400/400?random=9",
+    "category": "rings",
+    "featured": false
+  },
+  {
+    "id": 10,
+    "name": "Pearl Chain Bracelet",
+    "image": "https://picsum.photos/400/400?random=10",
+    "category": "bracelets",
+    "featured": false
+  },
+  {
+    "id": 11,
+    "name": "Ruby Pendant Necklace",
+    "image": "https://picsum.photos/400/400?random=11",
+    "category": "pendants",
+    "featured": true
+  },
+  {
+    "id": 12,
+    "name": "Platinum Chain",
+    "image": "https://picsum.photos/400/400?random=12",
+    "category": "chain",
+    "featured": false
+  },
+  {
+    "id": 13,
+    "name": "Traditional Gold Bangles",
+    "image": "https://picsum.photos/400/400?random=13",
+    "category": "bangles",
+    "featured": false
+  },
+  {
+    "id": 14,
+    "name": "Vintage Necklace",
+    "image": "https://picsum.photos/400/400?random=14",
+    "category": "necklaces",
+    "featured": false
+  },
+  {
+    "id": 15,
+    "name": "Crystal Drop Pendant",
+    "image": "https://picsum.photos/400/400?random=15",
+    "category": "pendants",
+    "featured": false
+  }
+]
