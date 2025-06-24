@@ -6,7 +6,7 @@ interface ImageModalProps {
   onClose: () => void;
   src: string;
   alt: string;
-  name?: string;
+  name: string;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ 
@@ -78,14 +78,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             className="w-full h-auto max-h-[80vh] object-contain"
           />
           
-          {/* Product Name Overlay - only show if name is provided */}
-          {name && (
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-              <h3 className="text-white text-xl md:text-2xl font-bold animate-fade-in-up">
-                {name}
-              </h3>
-            </div>
-          )}
+          {/* No product name overlay */}
         </div>
       </div>
     </div>

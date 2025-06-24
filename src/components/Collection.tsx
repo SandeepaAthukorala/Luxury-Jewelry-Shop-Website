@@ -1,96 +1,75 @@
 import React, { useState } from 'react';
-import itemsData from '../items.json';
+import productsData from '../data/products.json';
 import ImageModal from './ImageModal';
 import ScrollReveal from './ScrollReveal';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface ItemImage {
-  url: string;
-  index: number;
+interface Product {
+  id: number;
+  image: string;
+  category: string;
+  subcategory: string;
 }
 
 const Collection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('Gem & Gold Jewellery');
+  const [selectedCategory, setSelectedCategory] = useState('gem-gold');
   const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [modalImage, setModalImage] = useState<{
     isOpen: boolean;
     src: string;
-    alt: string;
   }>({
     isOpen: false,
-    src: '',
-    alt: ''
+    src: ''
   });
 
   const categories = {
-    'Gem & Gold Jewellery': {
+    'gem-gold': {
       name: '💎 Gem & Gold Jewellery',
-      subcategories: ['all', 'Chains Bracelets_gold', 'Earrings_gold', 'Necklaces_gold', 'Pendants_gold', 'Rings_gold']
+      subcategories: ['all', 'rings', 'earrings', 'pendants', 'chains-bracelets', 'necklaces']
     },
-    'Gem & Silver Jewellery': {
+    'gem-silver': {
       name: '🥈 Gem & Silver Jewellery', 
-      subcategories: ['all', 'Chains Bracelet silver', 'Loose Gemstones_silver', 'Pendants_silver', 'Rings_silver']
+      subcategories: ['all', 'rings', 'chains-bracelets', 'pendants', 'loose-gemstones']
     },
-    'Gold-Plated Jewellery': {
+    'gold-plated': {
       name: '✨ Gold-Plated Jewellery',
       subcategories: ['all']
     },
-    'Sunglasses': {
+    'watches-clocks': {
+      name: '⌚ Watches & Clocks',
+      subcategories: ['all', 'gents', 'ladies', 'children', 'wall-clocks', 'table-clocks']
+    },
+    'sunglasses': {
       name: '🕶️ Sunglasses',
       subcategories: ['all']
-    },
-    'Watches & Clocks': {
-      name: '⌚ Watches & Clocks',
-      subcategories: ['all', 'Gents Watches', 'Ladies Watches']
     }
   };
   
-  const getFilteredImages = (): ItemImage[] => {
-    const categoryData = itemsData[selectedCategory as keyof typeof itemsData];
-    if (!categoryData) return [];
+  const filteredProducts = productsData.filter((product: Product) => {
+    const categoryMatch = product.category === selectedCategory;
+    const subcategoryMatch = selectedSubcategory === 'all' || product.subcategory === selectedSubcategory;
+    return categoryMatch && subcategoryMatch;
+  });
 
-    let images: string[] = [];
-    
-    if (selectedSubcategory === 'all') {
-      // Get all images from all subcategories in the selected category
-      if (Array.isArray(categoryData)) {
-        images = categoryData;
-      } else {
-        images = Object.values(categoryData).flat();
-      }
-    } else {
-      // Get images from specific subcategory
-      if (Array.isArray(categoryData)) {
-        images = categoryData;
-      } else {
-        images = categoryData[selectedSubcategory as keyof typeof categoryData] || [];
-      }
-    }
-    
-    return images.map((url, index) => ({ url, index }));
-  };
-
-  const filteredImages = getFilteredImages();
-
-  const openModal = (imageItem: ItemImage) => {
+  const openModal = (product: Product) => {
     setModalImage({
       isOpen: true,
-      src: imageItem.url,
-      alt: `Item ${imageItem.index + 1}`
+      src: product.image
     });
   };
 
   const closeModal = () => {
     setModalImage({
       isOpen: false,
-      src: '',
-      alt: ''
+      src: ''
     });
   };
 
   const formatSubcategoryName = (subcategory: string) => {
-    if (subcategory === 'all') return 'All';
-    return subcategory.replace(/_/g, ' ');
+    return subcategory
+      .split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' & ');
   };
 
   return (
@@ -151,20 +130,31 @@ const Collection: React.FC = () => {
           </div>
         </ScrollReveal>
 
-        {/* Images Grid */}
+        {/* Special Label for Gold-Plated */}
+        {selectedCategory === 'gold-plated' && (
+          <ScrollReveal delay={300}>
+            <div className="text-center mb-8">
+              <span className="inline-block bg-chili-red text-white px-4 py-2 rounded-full text-sm font-semibold">
+                Limited Collection • Coming Soon
+              </span>
+            </div>
+          </ScrollReveal>
+        )}
+
+        {/* Products Grid */}
         <ScrollReveal delay={400}>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-6">
-            {filteredImages.map((imageItem: ItemImage, index) => (
+            {filteredProducts.map((product: Product, index) => (
               <div
-                key={`${selectedCategory}-${selectedSubcategory}-${index}`}
+                key={product.id}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
-                onClick={() => openModal(imageItem)}
+                onClick={() => openModal(product)}
               >
-                {/* Image */}
+                {/* Product Image */}
                 <div className="aspect-square overflow-hidden">
                   <img
-                    src={imageItem.url}
-                    alt={`Item ${index + 1}`}
+                    src={product.image}
+                    alt={product.name}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     loading="lazy"
                   />
@@ -180,16 +170,18 @@ const Collection: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* No product labels or featured badges */}
               </div>
             ))}
           </div>
         </ScrollReveal>
 
-        {/* No images message */}
-        {filteredImages.length === 0 && (
+        {/* No products message */}
+        {filteredProducts.length === 0 && (
           <ScrollReveal delay={400}>
             <div className="text-center py-12">
-              <p className="text-blue-grey text-lg">No items found in this category.</p>
+              <p className="text-blue-grey text-lg">No products found in this category.</p>
             </div>
           </ScrollReveal>
         )}
@@ -200,7 +192,8 @@ const Collection: React.FC = () => {
         isOpen={modalImage.isOpen}
         onClose={closeModal}
         src={modalImage.src}
-        alt={modalImage.alt}
+        alt=""
+        name=""
       />
     </section>
   );
