@@ -52,7 +52,7 @@ const Testimonials: React.FC = () => {
       <Star
         key={i}
         className={`w-5 h-5 transition-all duration-300 ${
-          i < rating ? 'text-[#D4AF37] fill-current scale-110' : 'text-gray-300'
+          i < rating ? 'text-chili-red fill-current scale-110' : 'text-gray-300'
         }`}
         style={{ animationDelay: `${i * 100}ms` }}
       />
@@ -60,14 +60,14 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 px-4 bg-[#A67C52]/5">
+    <section id="testimonials" className="py-20 px-4 bg-blue-grey/5">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1E1E1E] mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-royal-blue mb-4">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-[#1E1E1E]/70 max-w-2xl mx-auto">
+          <p className="text-lg text-blue-grey max-w-2xl mx-auto">
             Don't just take our word for it - hear from those who've experienced our craftsmanship
           </p>
         </ScrollReveal>
@@ -83,8 +83,8 @@ const Testimonials: React.FC = () => {
                 <div key={testimonial.id} className="w-full flex-shrink-0 p-8 md:p-12">
                   <div className="max-w-4xl mx-auto text-center">
                     {/* Quote Icon */}
-                    <div className="inline-flex items-center justify-center w-16 h-16 bg-[#D4AF37]/10 rounded-full mb-8 hover:bg-[#D4AF37]/20 transition-all duration-300 hover:scale-110">
-                      <Quote className="w-8 h-8 text-[#D4AF37]" />
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-royal-blue/10 rounded-full mb-8 hover:bg-royal-blue/20 transition-all duration-300 hover:scale-110">
+                      <Quote className="w-8 h-8 text-royal-blue" />
                     </div>
 
                     {/* Rating */}
@@ -93,7 +93,7 @@ const Testimonials: React.FC = () => {
                     </div>
 
                     {/* Comment */}
-                    <blockquote className="text-xl md:text-2xl text-[#1E1E1E] font-medium leading-relaxed mb-8 italic">
+                    <blockquote className="text-xl md:text-2xl text-royal-blue font-medium leading-relaxed mb-8 italic">
                       "{testimonial.comment}"
                     </blockquote>
 
@@ -102,13 +102,13 @@ const Testimonials: React.FC = () => {
                       <img
                         src={testimonial.avatar}
                         alt={testimonial.name}
-                        className="w-16 h-16 rounded-full object-cover border-4 border-[#D4AF37]/20 transition-transform duration-300 hover:scale-110"
+                        className="w-16 h-16 rounded-full object-cover border-4 border-chili-red/20 transition-transform duration-300 hover:scale-110"
                       />
                       <div className="text-left">
-                        <h4 className="text-lg font-bold text-[#1E1E1E]">
+                        <h4 className="text-lg font-bold text-royal-blue">
                           {testimonial.name}
                         </h4>
-                        <p className="text-[#1E1E1E]/60">
+                        <p className="text-blue-grey">
                           {testimonial.location}
                         </p>
                       </div>
@@ -122,13 +122,13 @@ const Testimonials: React.FC = () => {
           {/* Navigation Arrows - Hidden on mobile, positioned outside on desktop */}
           <button
             onClick={prevSlide}
-            className="hidden md:flex absolute -left-16 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-[#1E1E1E] hover:bg-[#FFF4CC] transition-all duration-300 hover:scale-110 active:scale-95"
+            className="hidden md:flex absolute -left-16 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-royal-blue hover:bg-blue-grey/10 transition-all duration-300 hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="hidden md:flex absolute -right-16 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-[#1E1E1E] hover:bg-[#FFF4CC] transition-all duration-300 hover:scale-110 active:scale-95"
+            className="hidden md:flex absolute -right-16 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg items-center justify-center text-royal-blue hover:bg-blue-grey/10 transition-all duration-300 hover:scale-110 active:scale-95"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -142,8 +142,8 @@ const Testimonials: React.FC = () => {
               onClick={() => goToSlide(index)}
               className={`h-3 rounded-full transition-all duration-300 hover:scale-110 ${
                 index === currentIndex
-                  ? 'bg-[#D4AF37] w-8'
-                  : 'bg-[#D4AF37]/30 hover:bg-[#D4AF37]/50 w-3'
+                  ? 'bg-chili-red w-8'
+                  : 'bg-chili-red/30 hover:bg-chili-red/50 w-3'
               }`}
             />
           ))}
@@ -153,13 +153,13 @@ const Testimonials: React.FC = () => {
         <div className="flex md:hidden justify-center gap-4 mt-6">
           <button
             onClick={prevSlide}
-            className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#1E1E1E] hover:bg-[#FFF4CC] transition-all duration-300 hover:scale-110 active:scale-95"
+            className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-royal-blue hover:bg-blue-grey/10 transition-all duration-300 hover:scale-110 active:scale-95"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={nextSlide}
-            className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-[#1E1E1E] hover:bg-[#FFF4CC] transition-all duration-300 hover:scale-110 active:scale-95"
+            className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-royal-blue hover:bg-blue-grey/10 transition-all duration-300 hover:scale-110 active:scale-95"
           >
             <ChevronRight className="w-6 h-6" />
           </button>
@@ -169,14 +169,14 @@ const Testimonials: React.FC = () => {
         <ScrollReveal delay={400} className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
           {[
             { value: '4.9/5', label: 'Average Rating' },
-            { value: '2,500+', label: 'Happy Customers' },
+            { value: '1,200+', label: 'Happy Customers' },
             { value: '99%', label: 'Satisfaction Rate' }
           ].map((stat, index) => (
             <div key={index} className="text-center group hover:-translate-y-1 transition-all duration-300">
-              <div className="text-3xl font-bold text-[#D4AF37] mb-2 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-3xl font-bold text-chili-red mb-2 group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </div>
-              <div className="text-[#1E1E1E]/70">{stat.label}</div>
+              <div className="text-blue-grey">{stat.label}</div>
             </div>
           ))}
         </ScrollReveal>

@@ -2,9 +2,10 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Collection from './components/Collection';
+import Services from './components/Services';
+import WhyChooseUs from './components/WhyChooseUs';
 import About from './components/About';
 import Testimonials from './components/Testimonials';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTop from './components/BackToTop';
 
@@ -14,9 +15,10 @@ function App() {
       <Navbar />
       <Hero />
       <Collection />
+      <Services />
+      <WhyChooseUs />
       <About />
       <Testimonials />
-      <Contact />
       <Footer />
       <BackToTop />
     </div>

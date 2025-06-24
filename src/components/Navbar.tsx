@@ -25,9 +25,9 @@ const Navbar: React.FC = () => {
   const navItems = [
     { label: 'Home', id: 'hero' },
     { label: 'Collections', id: 'collection' },
+    { label: 'Services', id: 'services' },
     { label: 'About', id: 'about' },
-    { label: 'Testimonials', id: 'testimonials' },
-    { label: 'Contact', id: 'contact' }
+    { label: 'Testimonials', id: 'testimonials' }
   ];
 
   return (
@@ -39,11 +39,11 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center gap-2 group cursor-pointer">
-            <div className="w-8 h-8 bg-[#D4AF37] rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
+          <div className="flex items-center gap-2 group cursor-pointer" onClick={() => scrollToSection('hero')}>
+            <div className="w-8 h-8 bg-royal-blue rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
               <Gem className="w-5 h-5 text-white" />
             </div>
-            <span className="text-xl font-bold text-[#1E1E1E] transition-colors duration-300 group-hover:text-[#D4AF37]">
+            <span className="text-xl font-bold text-royal-blue transition-colors duration-300 group-hover:text-chili-red">
               Elegance
             </span>
           </div>
@@ -54,10 +54,10 @@ const Navbar: React.FC = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="relative text-[#1E1E1E] hover:text-[#D4AF37] font-medium transition-all duration-300 group py-2"
+                className="relative text-royal-blue hover:text-chili-red font-medium transition-all duration-300 group py-2"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-chili-red transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </div>
@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 text-[#1E1E1E] hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 active:scale-95"
+            className="md:hidden p-2 text-royal-blue hover:text-chili-red transition-all duration-300 hover:scale-110 active:scale-95"
           >
             {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -75,13 +75,13 @@ const Navbar: React.FC = () => {
         <div className={`md:hidden overflow-hidden transition-all duration-300 ${
           isOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
         }`}>
-          <div className="bg-white/95 backdrop-blur-md border-t border-[#D4AF37]/20 rounded-b-2xl shadow-lg">
+          <div className="bg-white/95 backdrop-blur-md border-t border-royal-blue/20 rounded-b-2xl shadow-lg">
             <div className="py-4 space-y-2">
               {navItems.map((item, index) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-4 py-3 text-[#1E1E1E] hover:text-[#D4AF37] hover:bg-[#FFF4CC] transition-all duration-300 hover:translate-x-2"
+                  className="block w-full text-left px-4 py-3 text-royal-blue hover:text-chili-red hover:bg-royal-blue/10 transition-all duration-300 hover:translate-x-2"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
                   {item.label}

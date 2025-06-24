@@ -4,17 +4,17 @@ import { X } from 'lucide-react';
 interface ImageModalProps {
   isOpen: boolean;
   onClose: () => void;
-  imageSrc: string;
-  imageAlt: string;
-  productName: string;
+  src: string;
+  alt: string;
+  name?: string;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({ 
   isOpen, 
   onClose, 
-  imageSrc, 
-  imageAlt, 
-  productName 
+  src, 
+  alt, 
+  name 
 }) => {
   useEffect(() => {
     if (isOpen) {
@@ -73,17 +73,19 @@ const ImageModal: React.FC<ImageModalProps> = ({
         {/* Image */}
         <div className="relative">
           <img
-            src={imageSrc}
-            alt={imageAlt}
+            src={src}
+            alt={alt}
             className="w-full h-auto max-h-[80vh] object-contain"
           />
           
-          {/* Product Name Overlay */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-            <h3 className="text-white text-xl md:text-2xl font-bold animate-fade-in-up">
-              {productName}
-            </h3>
-          </div>
+          {/* Product Name Overlay - only show if name is provided */}
+          {name && (
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+              <h3 className="text-white text-xl md:text-2xl font-bold animate-fade-in-up">
+                {name}
+              </h3>
+            </div>
+          )}
         </div>
       </div>
     </div>

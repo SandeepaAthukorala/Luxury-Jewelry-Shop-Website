@@ -1,42 +1,82 @@
 import React, { useState } from 'react';
-import productsData from '../data/products.json';
+import itemsData from '../items.json';
 import ImageModal from './ImageModal';
 import ScrollReveal from './ScrollReveal';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-interface Product {
-  id: number;
-  name: string;
-  image: string;
-  category: string;
-  featured: boolean;
+interface ItemImage {
+  url: string;
+  index: number;
 }
 
 const Collection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCategory, setSelectedCategory] = useState('Gem & Gold Jewellery');
+  const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [modalImage, setModalImage] = useState<{
     isOpen: boolean;
     src: string;
     alt: string;
-    name: string;
   }>({
     isOpen: false,
     src: '',
-    alt: '',
-    name: ''
+    alt: ''
   });
 
-  const categories = ['all', 'rings', 'necklaces', 'bracelets', 'pendants', 'chain', 'bangles'];
+  const categories = {
+    'Gem & Gold Jewellery': {
+      name: '💎 Gem & Gold Jewellery',
+      subcategories: ['all', 'Chains Bracelets_gold', 'Earrings_gold', 'Necklaces_gold', 'Pendants_gold', 'Rings_gold']
+    },
+    'Gem & Silver Jewellery': {
+      name: '🥈 Gem & Silver Jewellery', 
+      subcategories: ['all', 'Chains Bracelet silver', 'Loose Gemstones_silver', 'Pendants_silver', 'Rings_silver']
+    },
+    'Gold-Plated Jewellery': {
+      name: '✨ Gold-Plated Jewellery',
+      subcategories: ['all']
+    },
+    'Sunglasses': {
+      name: '🕶️ Sunglasses',
+      subcategories: ['all']
+    },
+    'Watches & Clocks': {
+      name: '⌚ Watches & Clocks',
+      subcategories: ['all', 'Gents Watches', 'Ladies Watches']
+    }
+  };
   
-  const filteredProducts = productsData.filter((product: Product) => 
-    selectedCategory === 'all' || product.category === selectedCategory
-  );
+  const getFilteredImages = (): ItemImage[] => {
+    const categoryData = itemsData[selectedCategory as keyof typeof itemsData];
+    if (!categoryData) return [];
 
-  const openModal = (product: Product) => {
+    let images: string[] = [];
+    
+    if (selectedSubcategory === 'all') {
+      // Get all images from all subcategories in the selected category
+      if (Array.isArray(categoryData)) {
+        images = categoryData;
+      } else {
+        images = Object.values(categoryData).flat();
+      }
+    } else {
+      // Get images from specific subcategory
+      if (Array.isArray(categoryData)) {
+        images = categoryData;
+      } else {
+        images = categoryData[selectedSubcategory as keyof typeof categoryData] || [];
+      }
+    }
+    
+    return images.map((url, index) => ({ url, index }));
+  };
+
+  const filteredImages = getFilteredImages();
+
+  const openModal = (imageItem: ItemImage) => {
     setModalImage({
       isOpen: true,
-      src: product.image,
-      alt: product.name,
-      name: product.name
+      src: imageItem.url,
+      alt: `Item ${imageItem.index + 1}`
     });
   };
 
@@ -44,92 +84,123 @@ const Collection: React.FC = () => {
     setModalImage({
       isOpen: false,
       src: '',
-      alt: '',
-      name: ''
+      alt: ''
     });
   };
 
+  const formatSubcategoryName = (subcategory: string) => {
+    if (subcategory === 'all') return 'All';
+    return subcategory.replace(/_/g, ' ');
+  };
+
   return (
-    <section id="collection" className="py-20 px-4 bg-[#FDF6F0]">
-      <div className="max-w-7xl mx-auto">
+    <section id="collection" className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <ScrollReveal className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#1E1E1E] mb-4">
-            Featured Collection
-          </h2>
-          <p className="text-lg text-[#1E1E1E]/70 max-w-2xl mx-auto">
-            Handpicked pieces that embody luxury and sophistication
-          </p>
+        <ScrollReveal>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-royal-blue mb-4">
+              Our Collections
+            </h2>
+            <p className="text-lg text-blue-grey max-w-2xl mx-auto">
+              Explore our carefully curated selection of jewelry, timepieces, and accessories
+            </p>
+          </div>
         </ScrollReveal>
 
-        {/* Category Filter */}
-        <ScrollReveal delay={200} className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category, index) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-full font-semibold capitalize transition-all duration-300 hover:scale-105 active:scale-95 ${
-                selectedCategory === category
-                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8941F] text-white shadow-lg scale-105'
-                  : 'bg-white text-[#1E1E1E] hover:bg-[#FFF4CC] hover:shadow-md shadow-sm'
-              }`}
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              {category === 'all' ? 'All Items' : category}
-            </button>
-          ))}
+        {/* Category Navigation */}
+        <ScrollReveal delay={200}>
+          <div className="mb-8">
+            <div className="flex flex-wrap justify-center gap-2 mb-6">
+              {Object.entries(categories).map(([key, category]) => (
+                <button
+                  key={key}
+                  onClick={() => {
+                    setSelectedCategory(key);
+                    setSelectedSubcategory('all');
+                  }}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                    selectedCategory === key
+                      ? 'bg-royal-blue text-white shadow-lg'
+                      : 'bg-white text-blue-grey border border-blue-grey/30 hover:bg-royal-blue/10'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Subcategory Navigation */}
+            {categories[selectedCategory as keyof typeof categories].subcategories.length > 1 && (
+              <div className="flex flex-wrap justify-center gap-2">
+                {categories[selectedCategory as keyof typeof categories].subcategories.map((subcategory) => (
+                  <button
+                    key={subcategory}
+                    onClick={() => setSelectedSubcategory(subcategory)}
+                    className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
+                      selectedSubcategory === subcategory
+                        ? 'bg-chili-red text-white'
+                        : 'bg-gray-100 text-blue-grey hover:bg-chili-red/10'
+                    }`}
+                  >
+                    {formatSubcategoryName(subcategory)}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </ScrollReveal>
 
-        {/* Products Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product: Product, index) => (
-            <ScrollReveal key={product.id} delay={index * 100}>
+        {/* Images Grid */}
+        <ScrollReveal delay={400}>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-6">
+            {filteredImages.map((imageItem: ItemImage, index) => (
               <div
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer"
-                onClick={() => openModal(product)}
+                key={`${selectedCategory}-${selectedSubcategory}-${index}`}
+                className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                onClick={() => openModal(imageItem)}
               >
-                {/* Image Container */}
-                <div className="relative overflow-hidden">
+                {/* Image */}
+                <div className="aspect-square overflow-hidden">
                   <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+                    src={imageItem.url}
+                    alt={`Item ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
                   />
-                  
-                  {/* Featured Badge */}
-                  {product.featured && (
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-[#D4AF37] to-[#B8941F] text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
-                      Featured
+                </div>
+                
+                {/* Overlay on hover */}
+                <div className="absolute inset-0 bg-royal-blue/0 group-hover:bg-royal-blue/20 transition-all duration-300 flex items-center justify-center">
+                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
+                      <svg className="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                      </svg>
                     </div>
-                  )}
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center backdrop-blur-sm">
-                    <span className="text-white font-semibold bg-white/20 px-4 py-2 rounded-full backdrop-blur-sm transform scale-90 group-hover:scale-100 transition-transform duration-300">
-                      View Image
-                    </span>
                   </div>
                 </div>
-
-                {/* Product Info */}
-                <div className="p-4">
-                  <h3 className="text-lg font-bold text-[#1E1E1E] group-hover:text-[#D4AF37] transition-colors duration-300 text-center">
-                    {product.name}
-                  </h3>
-                </div>
               </div>
-            </ScrollReveal>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ScrollReveal>
+
+        {/* No images message */}
+        {filteredImages.length === 0 && (
+          <ScrollReveal delay={400}>
+            <div className="text-center py-12">
+              <p className="text-blue-grey text-lg">No items found in this category.</p>
+            </div>
+          </ScrollReveal>
+        )}
       </div>
 
       {/* Image Modal */}
       <ImageModal
         isOpen={modalImage.isOpen}
         onClose={closeModal}
-        imageSrc={modalImage.src}
-        imageAlt={modalImage.alt}
-        productName={modalImage.name}
+        src={modalImage.src}
+        alt={modalImage.alt}
       />
     </section>
   );
