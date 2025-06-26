@@ -1,190 +1,311 @@
 import React, { useState } from 'react';
-import productsData from '../data/products.json';
+import { motion, AnimatePresence } from 'framer-motion';
+import itemsData from '../items.json';
 import ImageModal from './ImageModal';
 import ScrollReveal from './ScrollReveal';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, Sparkles, Filter } from 'lucide-react';
 
-interface Product {
-  id: number;
-  image: string;
-  category: string;
-  subcategory: string;
+interface ItemsData {
+  [category: string]: {
+    [subcategory: string]: string[];
+  } | string[];
 }
 
 const Collection: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState('gem-gold');
+  const [selectedCategory, setSelectedCategory] = useState('Gem & Gold Jewellery');
   const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [modalImage, setModalImage] = useState<{
     isOpen: boolean;
     src: string;
+    alt: string;
+    name: string;
   }>({
     isOpen: false,
-    src: ''
+    src: '',
+    alt: '',
+    name: ''
   });
 
-  const categories = {
-    'gem-gold': {
-      name: '💎 Gem & Gold Jewellery',
-      subcategories: ['all', 'rings', 'earrings', 'pendants', 'chains-bracelets', 'necklaces']
-    },
-    'gem-silver': {
-      name: '🥈 Gem & Silver Jewellery', 
-      subcategories: ['all', 'rings', 'chains-bracelets', 'pendants', 'loose-gemstones']
-    },
-    'gold-plated': {
-      name: '✨ Gold-Plated Jewellery',
-      subcategories: ['all']
-    },
-    'watches-clocks': {
-      name: '⌚ Watches & Clocks',
-      subcategories: ['all', 'gents', 'ladies', 'children', 'wall-clocks', 'table-clocks']
-    },
-    'sunglasses': {
-      name: '🕶️ Sunglasses',
-      subcategories: ['all']
+  const typedItemsData = itemsData as ItemsData;
+
+  // Generate categories and subcategories from items.json
+  const categories = Object.keys(typedItemsData).reduce((acc, categoryKey) => {
+    const categoryData = typedItemsData[categoryKey];
+    
+    if (Array.isArray(categoryData)) {
+      // Simple array category (like Sunglasses, Gold-Plated Jewellery)
+      acc[categoryKey] = {
+        name: categoryKey,
+        subcategories: ['all']
+      };
+    } else {
+      // Object with subcategories
+      acc[categoryKey] = {
+        name: categoryKey,
+        subcategories: ['all', ...Object.keys(categoryData)]
+      };
+    }
+    
+    return acc;
+  }, {} as Record<string, { name: string; subcategories: string[] }>);
+  
+  // Get images based on selected category and subcategory
+  const getFilteredImages = (): string[] => {
+    const categoryData = typedItemsData[selectedCategory];
+    
+    if (Array.isArray(categoryData)) {
+      // Simple array category (like Sunglasses, Gold-Plated Jewellery)
+      return categoryData;
+    } else {
+      // Object with subcategories
+      if (selectedSubcategory === 'all') {
+        // Combine all subcategory images
+        return Object.values(categoryData).flat();
+      } else {
+        // Return images from specific subcategory
+        return categoryData[selectedSubcategory] || [];
+      }
     }
   };
-  
-  const filteredProducts = productsData.filter((product: Product) => {
-    const categoryMatch = product.category === selectedCategory;
-    const subcategoryMatch = selectedSubcategory === 'all' || product.subcategory === selectedSubcategory;
-    return categoryMatch && subcategoryMatch;
-  });
 
-  const openModal = (product: Product) => {
+  const filteredImages = getFilteredImages();
+
+  const openModal = (imageUrl: string) => {
     setModalImage({
       isOpen: true,
-      src: product.image
+      src: imageUrl,
+      alt: 'Jewelry item',
+      name: ''
     });
   };
 
   const closeModal = () => {
     setModalImage({
       isOpen: false,
-      src: ''
+      src: '',
+      alt: '',
+      name: ''
     });
   };
 
   const formatSubcategoryName = (subcategory: string) => {
     return subcategory
-      .split('-')
+      .split('_')[0] // Remove the suffix like '_gold'
+      .split(' ')
       .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' & ');
+      .join(' ');
   };
 
   return (
-    <section id="collection" className="py-16 lg:py-24 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="collection" className="py-16 lg:py-24 bg-luxury-gradient relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-luxury-gold rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-luxury-accent rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <ScrollReveal>
-          <div className="text-center mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold text-royal-blue mb-4">
-              Our Collections
-            </h2>
-            <p className="text-lg text-blue-grey max-w-2xl mx-auto">
-              Explore our carefully curated selection of jewelry, timepieces, and accessories
+          <motion.div 
+            className="text-center mb-12"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <Sparkles className="w-8 h-8 text-luxury-gold" />
+              <h2 className="text-4xl lg:text-5xl font-bold text-dark-100">
+                Our <span className="bg-gold-gradient bg-clip-text text-transparent">Collections</span>
+              </h2>
+              <Sparkles className="w-8 h-8 text-luxury-gold" />
+            </div>
+            <div className="w-24 h-1 bg-gold-gradient mx-auto mb-6 rounded-full"></div>
+            <p className="text-lg text-dark-200 max-w-2xl mx-auto">
+              Explore our carefully curated selection of luxury jewelry, timepieces, and premium accessories
             </p>
-          </div>
+          </motion.div>
         </ScrollReveal>
 
         {/* Category Navigation */}
         <ScrollReveal delay={200}>
-          <div className="mb-8">
-            <div className="flex flex-wrap justify-center gap-2 mb-6">
-              {Object.entries(categories).map(([key, category]) => (
-                <button
+          <motion.div 
+            className="mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Filter className="w-5 h-5 text-luxury-gold" />
+              <span className="text-dark-200 font-medium">Filter by Category:</span>
+            </div>
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              {Object.entries(categories).map(([key, category], index) => (
+                <motion.button
                   key={key}
                   onClick={() => {
                     setSelectedCategory(key);
                     setSelectedSubcategory('all');
                   }}
-                  className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  className={`px-6 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
                     selectedCategory === key
-                      ? 'bg-royal-blue text-white shadow-lg'
-                      : 'bg-white text-blue-grey border border-blue-grey/30 hover:bg-royal-blue/10'
+                      ? 'bg-gold-gradient text-dark-900 shadow-xl shadow-luxury-gold/20'
+                      : 'glass-luxury text-dark-100 hover:bg-luxury-gold/10 border border-luxury-gold/20'
                   }`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   {category.name}
-                </button>
+                </motion.button>
               ))}
             </div>
 
             {/* Subcategory Navigation */}
-            {categories[selectedCategory as keyof typeof categories].subcategories.length > 1 && (
-              <div className="flex flex-wrap justify-center gap-2">
-                {categories[selectedCategory as keyof typeof categories].subcategories.map((subcategory) => (
-                  <button
-                    key={subcategory}
-                    onClick={() => setSelectedSubcategory(subcategory)}
-                    className={`px-3 py-1 rounded-full text-xs font-medium transition-all duration-300 ${
-                      selectedSubcategory === subcategory
-                        ? 'bg-chili-red text-white'
-                        : 'bg-gray-100 text-blue-grey hover:bg-chili-red/10'
-                    }`}
-                  >
-                    {formatSubcategoryName(subcategory)}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+            <AnimatePresence>
+              {categories[selectedCategory]?.subcategories.length > 1 && (
+                <motion.div 
+                  className="flex flex-wrap justify-center gap-2"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {categories[selectedCategory]?.subcategories.map((subcategory, index) => (
+                    <motion.button
+                      key={subcategory}
+                      onClick={() => setSelectedSubcategory(subcategory)}
+                      className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
+                        selectedSubcategory === subcategory
+                          ? 'bg-luxury-accent text-white shadow-lg'
+                          : 'glass-luxury-light text-dark-200 hover:bg-luxury-accent/20 border border-luxury-accent/30'
+                      }`}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.2, delay: index * 0.05 }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {subcategory === 'all' ? 'All' : formatSubcategoryName(subcategory)}
+                    </motion.button>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
         </ScrollReveal>
 
         {/* Special Label for Gold-Plated */}
-        {selectedCategory === 'gold-plated' && (
-          <ScrollReveal delay={300}>
-            <div className="text-center mb-8">
-              <span className="inline-block bg-chili-red text-white px-4 py-2 rounded-full text-sm font-semibold">
-                Limited Collection • Coming Soon
-              </span>
-            </div>
-          </ScrollReveal>
-        )}
-
-        {/* Products Grid */}
-        <ScrollReveal delay={400}>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-6">
-            {filteredProducts.map((product: Product, index) => (
-              <div
-                key={product.id}
-                className="group relative bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
-                onClick={() => openModal(product)}
+        <AnimatePresence>
+          {selectedCategory === 'Gold-Plated Jewellery' && (
+            <ScrollReveal delay={300}>
+              <motion.div 
+                className="text-center mb-8"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.3 }}
               >
-                {/* Product Image */}
-                <div className="aspect-square overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                </div>
-                
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-royal-blue/0 group-hover:bg-royal-blue/20 transition-all duration-300 flex items-center justify-center">
-                  <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2">
-                      <svg className="w-6 h-6 text-royal-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+                <span className="inline-flex items-center gap-2 glass-luxury px-6 py-3 rounded-full text-sm font-semibold text-luxury-gold border border-luxury-gold/30">
+                  <Sparkles className="w-4 h-4" />
+                  Limited Collection • Coming Soon
+                  <Sparkles className="w-4 h-4" />
+                </span>
+              </motion.div>
+            </ScrollReveal>
+          )}
+        </AnimatePresence>
 
-                {/* No product labels or featured badges */}
-              </div>
-            ))}
-          </div>
+        {/* Images Grid */}
+        <ScrollReveal delay={400}>
+          <motion.div 
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 lg:gap-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <AnimatePresence>
+              {filteredImages.map((imageUrl: string, index) => (
+                <motion.div
+                  key={`${selectedCategory}-${selectedSubcategory}-${index}`}
+                  className="group relative glass-luxury rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-luxury-gold/20 cursor-pointer"
+                  onClick={() => openModal(imageUrl)}
+                  initial={{ opacity: 0, scale: 0.8, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, y: -20 }}
+                  transition={{ 
+                    duration: 0.4, 
+                    delay: index * 0.05,
+                    type: "spring",
+                    stiffness: 100
+                  }}
+                  whileHover={{ 
+                    scale: 1.05,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* Image */}
+                  <div className="aspect-square overflow-hidden relative">
+                    <img
+                      src={imageUrl}
+                      alt={`Item ${index + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+                  
+                  {/* Overlay on hover */}
+                  <motion.div 
+                    className="absolute inset-0 bg-luxury-gold/0 group-hover:bg-luxury-gold/10 transition-all duration-300 flex items-center justify-center"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                  >
+                    <motion.div 
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      initial={{ scale: 0.5 }}
+                      whileHover={{ scale: 1 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <div className="glass-luxury rounded-full p-3 border border-luxury-gold/30">
+                        <Search className="w-6 h-6 text-luxury-gold" />
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                  
+                  {/* Luxury Border Effect */}
+                  <div className="absolute inset-0 rounded-xl border border-luxury-gold/20 group-hover:border-luxury-gold/40 transition-colors duration-300"></div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </ScrollReveal>
 
-        {/* No products message */}
-        {filteredProducts.length === 0 && (
-          <ScrollReveal delay={400}>
-            <div className="text-center py-12">
-              <p className="text-blue-grey text-lg">No products found in this category.</p>
-            </div>
-          </ScrollReveal>
-        )}
+        {/* No images message */}
+        <AnimatePresence>
+          {filteredImages.length === 0 && (
+            <ScrollReveal delay={400}>
+              <motion.div 
+                className="text-center py-12"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="glass-luxury rounded-2xl p-8 max-w-md mx-auto border border-luxury-gold/20">
+                  <Sparkles className="w-12 h-12 text-luxury-gold mx-auto mb-4" />
+                  <p className="text-dark-200 text-lg mb-2">No items found in this category</p>
+                  <p className="text-dark-300 text-sm">Try selecting a different category or subcategory</p>
+                </div>
+              </motion.div>
+            </ScrollReveal>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Image Modal */}
@@ -192,8 +313,8 @@ const Collection: React.FC = () => {
         isOpen={modalImage.isOpen}
         onClose={closeModal}
         src={modalImage.src}
-        alt=""
-        name=""
+        alt={modalImage.alt}
+        name={modalImage.name}
       />
     </section>
   );

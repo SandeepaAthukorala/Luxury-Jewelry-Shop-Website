@@ -1,542 +1,181 @@
 [
   {
     "id": 1,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738427/Whisk_f74041681a_rlqyyx.webp",
+    "name": "Diamond Gold Ring",
+    "image": "https://picsum.photos/400/400?random=1",
     "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "subcategory": "rings",
+    "featured": true
   },
   {
     "id": 2,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738421/Whisk_cc0c3a2791_t0s0j8.webp",
+    "name": "Ruby Gold Earrings",
+    "image": "https://picsum.photos/400/400?random=2",
     "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "subcategory": "earrings",
+    "featured": true
   },
   {
     "id": 3,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738416/Whisk_c1ef47760c_x6d4kk.webp",
+    "name": "Emerald Gold Pendant",
+    "image": "https://picsum.photos/400/400?random=3",
     "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "subcategory": "pendants",
+    "featured": true
   },
   {
     "id": 4,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738410/Whisk_b67a3a4494_z3f9vl.webp",
+    "name": "Sapphire Gold Chain",
+    "image": "https://picsum.photos/400/400?random=4",
     "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "subcategory": "chains-bracelets",
+    "featured": true
   },
   {
     "id": 5,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738404/Whisk_b5718e903e_1_ycijmw.webp",
+    "name": "Pearl Gold Necklace",
+    "image": "https://picsum.photos/400/400?random=5",
     "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "subcategory": "necklaces",
+    "featured": false
   },
   {
     "id": 6,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738393/Whisk_9ef217f51a_ccgrua.webp",
+    "name": "Gold Tennis Bracelet",
+    "image": "https://picsum.photos/400/400?random=6",
     "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "subcategory": "chains-bracelets",
+    "featured": true
   },
   {
     "id": 7,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738387/Whisk_78ea6c053c_zhocht.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Amethyst Silver Ring",
+    "image": "https://picsum.photos/400/400?random=7",
+    "category": "gem-silver",
+    "subcategory": "rings",
+    "featured": true
   },
   {
     "id": 8,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738382/Whisk_588383ea64_uqy6ro.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Turquoise Silver Chain",
+    "image": "https://picsum.photos/400/400?random=8",
+    "category": "gem-silver",
+    "subcategory": "chains-bracelets",
+    "featured": false
   },
   {
     "id": 9,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738376/Whisk_5a05751b12_lycazm.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Moonstone Silver Pendant",
+    "image": "https://picsum.photos/400/400?random=9",
+    "category": "gem-silver",
+    "subcategory": "pendants",
+    "featured": true
   },
   {
     "id": 10,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738370/Whisk_b082c2b790_yfcr5c.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Raw Ruby Gemstone",
+    "image": "https://picsum.photos/400/400?random=10",
+    "category": "gem-silver",
+    "subcategory": "loose-gemstones",
+    "featured": false
   },
   {
     "id": 11,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738365/Whisk_5e7b5deb65_zawghz.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Emerald Loose Stone",
+    "image": "https://picsum.photos/400/400?random=11",
+    "category": "gem-silver",
+    "subcategory": "loose-gemstones",
+    "featured": false
   },
   {
     "id": 12,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738353/Whisk_3f0f75591e_jbe9ez.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Gold Plated Ring",
+    "image": "https://picsum.photos/400/400?random=12",
+    "category": "gold-plated",
+    "subcategory": "all",
+    "featured": true,
+    "label": "Limited Collection"
   },
   {
     "id": 13,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738348/Whisk_16481f794d_ngneeb.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Gold Plated Earrings",
+    "image": "https://picsum.photos/400/400?random=13",
+    "category": "gold-plated",
+    "subcategory": "all",
+    "featured": false,
+    "label": "Coming Soon"
   },
   {
     "id": 14,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738342/Whisk_3933864710_adz48v.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Gold Plated Necklace",
+    "image": "https://picsum.photos/400/400?random=14",
+    "category": "gold-plated",
+    "subcategory": "all",
+    "featured": true,
+    "label": "Limited Collection"
   },
   {
     "id": 15,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738336/Whisk_3499af3799_siu5m4.webp",
-    "category": "gem-gold",
-    "subcategory": "chains-bracelets"
+    "name": "Men's Luxury Watch",
+    "image": "https://picsum.photos/400/400?random=15",
+    "category": "watches-clocks",
+    "subcategory": "gents",
+    "featured": true
   },
   {
     "id": 16,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738585/Whisk_f284bff312_vmdrba.webp",
-    "category": "gem-gold",
-    "subcategory": "earrings"
+    "name": "Ladies' Diamond Watch",
+    "image": "https://picsum.photos/400/400?random=16",
+    "category": "watches-clocks",
+    "subcategory": "ladies",
+    "featured": true
   },
   {
     "id": 17,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738572/Whisk_ec0c0c47c9_1_nfpymd.webp",
-    "category": "gem-gold",
-    "subcategory": "earrings"
+    "name": "Kids' Colorful Watch",
+    "image": "https://picsum.photos/400/400?random=17",
+    "category": "watches-clocks",
+    "subcategory": "children",
+    "featured": false
   },
   {
     "id": 18,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738566/Whisk_eb9d8c7cfa_biadhd.webp",
-    "category": "gem-gold",
-    "subcategory": "earrings"
+    "name": "Vintage Wall Clock",
+    "image": "https://picsum.photos/400/400?random=18",
+    "category": "watches-clocks",
+    "subcategory": "wall-clocks",
+    "featured": true
   },
   {
     "id": 19,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738560/Whisk_e9747441c5_onltzx.webp",
-    "category": "gem-gold",
-    "subcategory": "earrings"
+    "name": "Modern Table Clock",
+    "image": "https://picsum.photos/400/400?random=19",
+    "category": "watches-clocks",
+    "subcategory": "table-clocks",
+    "featured": false
   },
   {
     "id": 20,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738554/Whisk_e05a857572_vbixx5.webp",
-    "category": "gem-gold",
-    "subcategory": "earrings"
+    "name": "Aviator Sunglasses",
+    "image": "https://picsum.photos/400/400?random=20",
+    "category": "sunglasses",
+    "subcategory": "all",
+    "featured": true
   },
   {
     "id": 21,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738703/Whisk_bd6a5016e3_i66sds.webp",
-    "category": "gem-gold",
-    "subcategory": "necklaces"
+    "name": "Cat Eye Sunglasses",
+    "image": "https://picsum.photos/400/400?random=21",
+    "category": "sunglasses",
+    "subcategory": "all",
+    "featured": true
   },
   {
     "id": 22,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738697/Whisk_b260381846_lb0ajd.webp",
-    "category": "gem-gold",
-    "subcategory": "necklaces"
-  },
-  {
-    "id": 23,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738690/Whisk_a283330abd_nrnkkv.webp",
-    "category": "gem-gold",
-    "subcategory": "necklaces"
-  },
-  {
-    "id": 24,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738684/Whisk_9aac70d125_ntk105.webp",
-    "category": "gem-gold",
-    "subcategory": "necklaces"
-  },
-  {
-    "id": 25,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738678/Whisk_95f9451f67_hwlygs.webp",
-    "category": "gem-gold",
-    "subcategory": "necklaces"
-  },
-  {
-    "id": 26,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738845/Whisk_d6fc477149_ltel1f.webp",
-    "category": "gem-gold",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 27,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738838/Whisk_cbca4059af_vbujic.webp",
-    "category": "gem-gold",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 28,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738825/Whisk_c33792e2f6_b8dqyb.webp",
-    "category": "gem-gold",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 29,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738813/Whisk_b441ae4831_cppoaw.webp",
-    "category": "gem-gold",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 30,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738807/Whisk_a9c18a7720_wbxyuh.webp",
-    "category": "gem-gold",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 31,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739003/Whisk_e4e17859ae_qk04n0.webp",
-    "category": "gem-gold",
-    "subcategory": "rings"
-  },
-  {
-    "id": 32,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738997/Whisk_eb9691774c_xdv0ay.webp",
-    "category": "gem-gold",
-    "subcategory": "rings"
-  },
-  {
-    "id": 33,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738990/Whisk_d510c6ddb5_j2t32v.webp",
-    "category": "gem-gold",
-    "subcategory": "rings"
-  },
-  {
-    "id": 34,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738977/Whisk_8ac616b7a0_htyyzm.webp",
-    "category": "gem-gold",
-    "subcategory": "rings"
-  },
-  {
-    "id": 35,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750738971/Whisk_881c7008e5_frjren.webp",
-    "category": "gem-gold",
-    "subcategory": "rings"
-  },
-  {
-    "id": 36,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739319/Image_Editor_10_m8hwzs.webp",
-    "category": "gem-silver",
-    "subcategory": "chains-bracelets"
-  },
-  {
-    "id": 37,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739272/Image_Editor_1_fnbcd7.webp",
-    "category": "gem-silver",
-    "subcategory": "chains-bracelets"
-  },
-  {
-    "id": 38,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739175/Whisk_d0b2743a6f_blyzuz.webp",
-    "category": "gem-silver",
-    "subcategory": "chains-bracelets"
-  },
-  {
-    "id": 39,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739085/Whisk_477cb861da_jjyoum.webp",
-    "category": "gem-silver",
-    "subcategory": "chains-bracelets"
-  },
-  {
-    "id": 40,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739072/Whisk_3e752daa69_voks0a.webp",
-    "category": "gem-silver",
-    "subcategory": "chains-bracelets"
-  },
-  {
-    "id": 41,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739446/Image_Editor_8_tjvquv.webp",
-    "category": "gem-silver",
-    "subcategory": "loose-gemstones"
-  },
-  {
-    "id": 42,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739438/Image_Editor_11_c0wugs.webp",
-    "category": "gem-silver",
-    "subcategory": "loose-gemstones"
-  },
-  {
-    "id": 43,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739431/Image_Editor_5_jw4mmi.webp",
-    "category": "gem-silver",
-    "subcategory": "loose-gemstones"
-  },
-  {
-    "id": 44,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739424/Image_Editor_3_t2mfla.webp",
-    "category": "gem-silver",
-    "subcategory": "loose-gemstones"
-  },
-  {
-    "id": 45,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739417/Image_Editor_7_nwmlcs.webp",
-    "category": "gem-silver",
-    "subcategory": "loose-gemstones"
-  },
-  {
-    "id": 46,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739578/Image_Editor_nxv179.webp",
-    "category": "gem-silver",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 47,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739571/Image_Editor_9_ncobi9.webp",
-    "category": "gem-silver",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 48,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739564/Image_Editor_3_auczuz.webp",
-    "category": "gem-silver",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 49,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739556/Image_Editor_4_mp2bfa.webp",
-    "category": "gem-silver",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 50,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739549/Image_Editor_2_hlks9q.webp",
-    "category": "gem-silver",
-    "subcategory": "pendants"
-  },
-  {
-    "id": 51,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739712/Image_Editor_bb5jio.webp",
-    "category": "gem-silver",
-    "subcategory": "rings"
-  },
-  {
-    "id": 52,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739705/Image_Editor_9_cw2ffn.webp",
-    "category": "gem-silver",
-    "subcategory": "rings"
-  },
-  {
-    "id": 53,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739697/Image_Editor_8_s1rcvo.webp",
-    "category": "gem-silver",
-    "subcategory": "rings"
-  },
-  {
-    "id": 54,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739690/Image_Editor_7_kdsq18.webp",
-    "category": "gem-silver",
-    "subcategory": "rings"
-  },
-  {
-    "id": 55,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739683/Image_Editor_6_tftfqe.webp",
-    "category": "gem-silver",
-    "subcategory": "rings"
-  },
-  {
-    "id": 56,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750692752/Image_Editor_hb1cui.webp",
-    "category": "gold-plated",
-    "subcategory": "all"
-  },
-  {
-    "id": 57,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750692751/Image_Editor_9_ghytds.webp",
-    "category": "gold-plated",
-    "subcategory": "all"
-  },
-  {
-    "id": 58,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750692751/Image_Editor_8_bufmsb.webp",
-    "category": "gold-plated",
-    "subcategory": "all"
-  },
-  {
-    "id": 59,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750692751/Image_Editor_7_cr1fxu.webp",
-    "category": "gold-plated",
-    "subcategory": "all"
-  },
-  {
-    "id": 60,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750692751/Image_Editor_6_u0bgnf.webp",
-    "category": "gold-plated",
-    "subcategory": "all"
-  },
-  {
-    "id": 61,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750740884/Whisk_e1eb552552_vqysfw.webp",
+    "name": "Round Frame Sunglasses",
+    "image": "https://picsum.photos/400/400?random=22",
     "category": "sunglasses",
-    "subcategory": "all"
-  },
-  {
-    "id": 62,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750740884/Whisk_ce169d4651_vrusxt.webp",
-    "category": "sunglasses",
-    "subcategory": "all"
-  },
-  {
-    "id": 63,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750740883/Whisk_c8f2777224_e9x9to.webp",
-    "category": "sunglasses",
-    "subcategory": "all"
-  },
-  {
-    "id": 64,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750740883/Whisk_a30b953860_qxlmkd.webp",
-    "category": "sunglasses",
-    "subcategory": "all"
-  },
-  {
-    "id": 65,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750740882/Image_fx_xlno6h.webp",
-    "category": "sunglasses",
-    "subcategory": "all"
-  },
-  {
-    "id": 66,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739909/Whisk_da8b6d0fd4_mdlxvf.webp",
-    "category": "watches-clocks",
-    "subcategory": "children"
-  },
-  {
-    "id": 67,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739901/Whisk_e457dd7469_oiku56.webp",
-    "category": "watches-clocks",
-    "subcategory": "children"
-  },
-  {
-    "id": 68,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739894/Whisk_fd1177e855_xipvrs.webp",
-    "category": "watches-clocks",
-    "subcategory": "children"
-  },
-  {
-    "id": 69,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739886/Whisk_f16c417f25_jr0tbx.webp",
-    "category": "watches-clocks",
-    "subcategory": "children"
-  },
-  {
-    "id": 70,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750739878/Whisk_de16ddc00d_bsazh5.webp",
-    "category": "watches-clocks",
-    "subcategory": "children"
-  },
-  {
-    "id": 71,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732734/Image_Editor_9_aiep7q.webp",
-    "category": "watches-clocks",
-    "subcategory": "gents"
-  },
-  {
-    "id": 72,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732732/Image_Editor_8_nck3ak.webp",
-    "category": "watches-clocks",
-    "subcategory": "gents"
-  },
-  {
-    "id": 73,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732729/Image_Editor_7_k7f0ll.webp",
-    "category": "watches-clocks",
-    "subcategory": "gents"
-  },
-  {
-    "id": 74,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732727/Image_Editor_6_bsqjp8.webp",
-    "category": "watches-clocks",
-    "subcategory": "gents"
-  },
-  {
-    "id": 75,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732724/Image_Editor_5_rwujzn.webp",
-    "category": "watches-clocks",
-    "subcategory": "gents"
-  },
-  {
-    "id": 76,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732814/Image_Editor_gh7gid.webp",
-    "category": "watches-clocks",
-    "subcategory": "ladies"
-  },
-  {
-    "id": 77,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732811/Image_Editor_9_ss2nv0.webp",
-    "category": "watches-clocks",
-    "subcategory": "ladies"
-  },
-  {
-    "id": 78,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732808/Image_Editor_7_j3kj0g.webp",
-    "category": "watches-clocks",
-    "subcategory": "ladies"
-  },
-  {
-    "id": 79,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732806/Image_Editor_6_djdbte.webp",
-    "category": "watches-clocks",
-    "subcategory": "ladies"
-  },
-  {
-    "id": 80,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732800/Image_Editor_4_jxim8j.webp",
-    "category": "watches-clocks",
-    "subcategory": "ladies"
-  },
-  {
-    "id": 81,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732898/Whisk_e9e0d8113d_npqmze.webp",
-    "category": "watches-clocks",
-    "subcategory": "table-clocks"
-  },
-  {
-    "id": 82,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732889/Whisk_e0e9b32073_bdm3v8.webp",
-    "category": "watches-clocks",
-    "subcategory": "table-clocks"
-  },
-  {
-    "id": 83,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732886/Whisk_df759b0cad_exn2sb.webp",
-    "category": "watches-clocks",
-    "subcategory": "table-clocks"
-  },
-  {
-    "id": 84,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732883/Whisk_cc741c43e3_qt2vep.webp",
-    "category": "watches-clocks",
-    "subcategory": "table-clocks"
-  },
-  {
-    "id": 85,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732878/Whisk_b7337baa42_bzqw3x.webp",
-    "category": "watches-clocks",
-    "subcategory": "table-clocks"
-  },
-  {
-    "id": 86,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732974/Whisk_f807a857e0_nqym0y.webp",
-    "category": "watches-clocks",
-    "subcategory": "wall-clocks"
-  },
-  {
-    "id": 87,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732968/Whisk_cf56a7d204_po84jd.webp",
-    "category": "watches-clocks",
-    "subcategory": "wall-clocks"
-  },
-  {
-    "id": 88,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732965/Whisk_d8c6cdbdd2_o2oxoz.webp",
-    "category": "watches-clocks",
-    "subcategory": "wall-clocks"
-  },
-  {
-    "id": 89,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732962/Whisk_b701c9e1f9_hbeaas.webp",
-    "category": "watches-clocks",
-    "subcategory": "wall-clocks"
-  },
-  {
-    "id": 90,
-    "image": "https://res.cloudinary.com/devpq4myi/image/upload/v1750732959/Whisk_c7a19c50cf_vmyemg.webp",
-    "category": "watches-clocks",
-    "subcategory": "wall-clocks"
+    "subcategory": "all",
+    "featured": false
   }
 ]

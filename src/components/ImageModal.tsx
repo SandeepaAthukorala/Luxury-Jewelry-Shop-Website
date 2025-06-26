@@ -78,7 +78,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
             className="w-full h-auto max-h-[80vh] object-contain"
           />
           
-          {/* No product name overlay */}
+          {/* No product name overlay anymore */}
         </div>
       </div>
     </div>
