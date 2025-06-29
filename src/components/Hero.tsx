@@ -10,7 +10,7 @@ const Hero: React.FC = () => {
   };
 
   const handleWhatsAppClick = () => {
-    const whatsappNumber = "1234567890";
+    const whatsappNumber = "94769392773";
     const whatsappMessage = "Hello! I'm interested in your jewelry collection.";
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(url, '_blank');
@@ -21,8 +21,8 @@ const Hero: React.FC = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img 
-          src="https://picsum.photos/1920/1080?random=hero" 
-          alt="Luxury Jewelry Collection"
+          src="https://res.cloudinary.com/devpq4myi/image/upload/v1751186714/IMG_3153_i3b43h.webp" 
+          alt="Western Jewelers Store"
           className="w-full h-full object-cover opacity-15"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-dark-900/90 via-dark-800/80 to-dark-700/70"></div>
@@ -106,9 +106,9 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-                <span className="block text-dark-100 mb-2">Elegance</span>
+                <span className="block text-dark-100 mb-2">Western</span>
                 <span className="block bg-gold-gradient bg-clip-text text-transparent animate-glow">
-                  Redefined
+                  Jewelers
                 </span>
               </h1>
             </motion.div>
@@ -196,13 +196,13 @@ const Hero: React.FC = () => {
               {/* Contact Buttons */}
               <div className="space-y-4 mb-8">
                 <motion.a 
-                  href="tel:+1234567890" 
+                  href="tel:+94769392773" 
                   className="flex items-center justify-center w-full glass-luxury-light hover:bg-luxury-gold/20 text-dark-100 py-4 px-6 rounded-xl transition-all duration-300 group"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <Phone className="w-5 h-5 mr-3 text-luxury-gold group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold">Call: +123 456 7890</span>
+                  <span className="font-semibold">Call: +94 76 939 2773</span>
                 </motion.a>
                 
                 <motion.a 

@@ -39,7 +39,7 @@ const About: React.FC = () => {
                 <span className="block bg-gold-gradient bg-clip-text text-transparent">Timeless Beauty</span>
               </h2>
               <p className="text-lg text-dark-200 leading-relaxed mb-6">
-                Since 2014, we have been dedicated to creating extraordinary jewelry pieces and timepieces that tell your unique story. Each piece is meticulously handcrafted by our master artisans using the finest materials and time-honored techniques.
+                Since 2014, Western Jewelers has been dedicated to creating extraordinary jewelry pieces and timepieces that tell your unique story. Each piece is meticulously handcrafted by our master artisans using the finest materials and time-honored techniques.
               </p>
               <p className="text-lg text-dark-200 leading-relaxed">
                 From engagement rings that mark life's most precious moments to luxury watches and statement pieces that express your individual style, we believe that jewelry should be as unique as the person wearing it.
@@ -100,20 +100,64 @@ const About: React.FC = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main Image */}
-              <motion.div 
-                className="relative rounded-3xl overflow-hidden shadow-2xl group border border-luxury-gold/20"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <img
-                  src="https://picsum.photos/600/700?random=about1"
-                  alt="Master craftsman at work"
-                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
-                <div className="absolute inset-0 bg-luxury-gold/5 group-hover:bg-luxury-gold/10 transition-colors duration-300"></div>
-              </motion.div>
+              {/* Shop Images Grid */}
+              <div className="grid grid-cols-2 gap-4">
+                <motion.div 
+                  className="relative rounded-2xl overflow-hidden shadow-xl group border border-luxury-gold/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="https://res.cloudinary.com/devpq4myi/image/upload/v1751186713/IMG_3146_yxa5vn.webp"
+                    alt="Western Jewelers Interior"
+                    className="w-full h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-luxury-gold/5 group-hover:bg-luxury-gold/10 transition-colors duration-300"></div>
+                </motion.div>
+                
+                <motion.div 
+                  className="relative rounded-2xl overflow-hidden shadow-xl group border border-luxury-gold/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="https://res.cloudinary.com/devpq4myi/image/upload/v1751186711/IMG_3152_bmnho0.webp"
+                    alt="Western Jewelers Display"
+                    className="w-full h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-luxury-gold/5 group-hover:bg-luxury-gold/10 transition-colors duration-300"></div>
+                </motion.div>
+                
+                <motion.div 
+                  className="relative rounded-2xl overflow-hidden shadow-xl group border border-luxury-gold/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="https://res.cloudinary.com/devpq4myi/image/upload/v1751186711/IMG_3161_mybxsd.webp"
+                    alt="Western Jewelers Collection"
+                    className="w-full h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-luxury-gold/5 group-hover:bg-luxury-gold/10 transition-colors duration-300"></div>
+                </motion.div>
+                
+                <motion.div 
+                  className="relative rounded-2xl overflow-hidden shadow-xl group border border-luxury-gold/20"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <img
+                    src="https://res.cloudinary.com/devpq4myi/image/upload/v1751186708/IMG_3164_he8rzy.webp"
+                    alt="Western Jewelers Showcase"
+                    className="w-full h-[240px] object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
+                  <div className="absolute inset-0 bg-luxury-gold/5 group-hover:bg-luxury-gold/10 transition-colors duration-300"></div>
+                </motion.div>
+              </div>
 
               {/* Floating Card */}
               <motion.div 

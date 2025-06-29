@@ -4,7 +4,7 @@ import ScrollReveal from './ScrollReveal';
 
 const Contact: React.FC = () => {
   const [isWhatsAppBouncing, setIsWhatsAppBouncing] = useState(false);
-  const whatsappNumber = "1234567890";
+  const whatsappNumber = "94769392773";
   const whatsappMessage = "Hello! I'm interested in your jewelry collection.";
   
   const socialLinks = [
@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
                 {[
                   { icon: MapPin, title: 'Visit Our Showroom', desc: '123 Luxury Lane, Diamond District, NY 10001' },
                   { icon: Clock, title: 'Opening Hours', desc: 'Mon-Fri: 10AM-7PM\nSat-Sun: 10AM-6PM' },
-                  { icon: Phone, title: 'Call Us', desc: '+1 (555) 123-4567' }
+                  { icon: Phone, title: 'Call Us', desc: '+94 76 939 2773' }
                 ].map((item, index) => {
                   const IconComponent = item.icon;
                   return (
