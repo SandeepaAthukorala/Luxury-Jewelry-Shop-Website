@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Gem, MessageCircle, Sparkles } from 'lucide-react';
+import { Gem, MessageCircle, Sparkles, Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer: React.FC = () => {
   const whatsappNumber = "94769392773";
