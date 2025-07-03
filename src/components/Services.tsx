@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrench, Watch, Sparkles, Heart, ArrowRight } from 'lucide-react';
+import { Wrench, Watch, Sparkles, Heart } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 
@@ -9,7 +9,7 @@ const Services: React.FC = () => {
       icon: Wrench,
       title: 'Gold & Silver Repairs',
       description: 'Expert restoration and repair services for your precious jewelry with meticulous attention to detail',
-      color: 'luxury-gold'
+      color: 'luxury-primary'
     },
     {
       icon: Watch,
@@ -21,7 +21,7 @@ const Services: React.FC = () => {
       icon: Sparkles,
       title: 'Custom Jewellery Orders',
       description: 'Bespoke jewelry design and creation tailored to your unique vision and personal style',
-      color: 'luxury-gold'
+      color: 'luxury-primary'
     },
     {
       icon: Heart,
@@ -32,7 +32,7 @@ const Services: React.FC = () => {
   ];
 
   const handleContactClick = () => {
-    const whatsappNumber = "1234567890";
+    const whatsappNumber = "94769392773";
     const whatsappMessage = "Hello! I'm interested in your jewelry services.";
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
     window.open(url, '_blank');
@@ -43,8 +43,8 @@ const Services: React.FC = () => {
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
-          backgroundImage: `radial-gradient(circle at 25% 25%, #D4AF37 2px, transparent 2px),
-                           radial-gradient(circle at 75% 75%, #8B5CF6 2px, transparent 2px)`,
+          backgroundImage: `radial-gradient(circle at 25% 25%, #4169E1 2px, transparent 2px),
+                           radial-gradient(circle at 75% 75%, #FFFFFF 2px, transparent 2px)`,
           backgroundSize: '60px 60px'
         }}></div>
       </div>
@@ -59,21 +59,21 @@ const Services: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 bg-luxury-gold/10 rounded-full px-6 py-2 mb-6">
-              <Sparkles className="w-5 h-5 text-luxury-gold" />
-              <span className="text-luxury-gold font-medium tracking-wide">Premium Services</span>
+            <div className="inline-flex items-center gap-2 bg-luxury-primary/10 rounded-full px-6 py-2 mb-6">
+              <Sparkles className="w-5 h-5 text-luxury-primary" />
+              <span className="text-luxury-primary font-medium tracking-wide">Premium Services</span>
             </div>
             
-            <h2 className="text-5xl lg:text-6xl font-bold text-dark-100 mb-6">
-              Our <span className="bg-gold-gradient bg-clip-text text-transparent">Services</span>
+            <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+              Our <span className="bg-royal-gradient bg-clip-text text-transparent">Services</span>
             </h2>
             
-            <div className="w-24 h-1 bg-gold-gradient rounded-full mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-royal-gradient rounded-full mx-auto mb-6"></div>
             
-            <p className="text-2xl text-luxury-gold mb-4 font-medium">
-              Excellence Since 2014
+            <p className="text-2xl text-luxury-primary mb-4 font-medium">
+              Excellence Since 2019
             </p>
-            <p className="text-xl text-dark-200 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
               Professional jewelry and timepiece services delivered with unmatched expertise and precision
             </p>
           </motion.div>
@@ -97,29 +97,25 @@ const Services: React.FC = () => {
                   <motion.div 
                     className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-all duration-300`}
                     style={{
-                      background: service.color === 'luxury-gold' 
-                        ? 'linear-gradient(135deg, #D4AF37 0%, #E6C866 50%, #B8941F 100%)'
-                        : 'linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #7C3AED 100%)'
+                      background: service.color === 'luxury-primary' 
+                        ? 'linear-gradient(135deg, #4169E1 0%, #6495ED 50%, #1E3A8A 100%)'
+                        : 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #E2E8F0 100%)'
                     }}
                   >
-                    <IconComponent className="w-10 h-10 text-dark-900" />
+                    <IconComponent className={`w-10 h-10 ${service.color === 'luxury-primary' ? 'text-white' : 'text-luxury-primary'}`} />
                   </motion.div>
                   
                   {/* Title */}
-                  <h3 className="text-2xl font-bold text-dark-100 mb-4 group-hover:text-luxury-gold transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-luxury-primary transition-colors duration-300">
                     {service.title}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-dark-300 leading-relaxed mb-6">
+                  <p className="text-white leading-relaxed mb-6">
                     {service.description}
                   </p>
                   
-                  {/* Learn More Link */}
-                  <div className="flex items-center justify-center text-luxury-gold group-hover:text-luxury-gold-light transition-colors duration-300">
-                    <span className="font-medium mr-2">Learn More</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                  </div>
+
                 </motion.div>
               </ScrollReveal>
             );
@@ -136,10 +132,10 @@ const Services: React.FC = () => {
             viewport={{ once: true }}
           >
             <div className="glass-luxury rounded-3xl p-12 max-w-4xl mx-auto">
-              <h3 className="text-3xl font-bold text-dark-100 mb-4">
+              <h3 className="text-3xl font-bold text-white mb-4">
                 Ready to Experience Premium Service?
               </h3>
-              <p className="text-xl text-dark-200 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
                 Contact us today for a personalized consultation and discover how we can bring your jewelry vision to life
               </p>
               
@@ -154,7 +150,7 @@ const Services: React.FC = () => {
                 </motion.button>
                 
                 <motion.a 
-                  href="tel:+1234567890"
+                  href="tel:+94769392773"
                   className="btn-luxury-outline text-lg px-10 py-5"
                   whileHover={{ scale: 1.05, y: -2 }}
                   whileTap={{ scale: 0.95 }}

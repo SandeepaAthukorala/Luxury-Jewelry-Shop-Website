@@ -17,12 +17,12 @@ export default {
           100: '#d0d0d0',
         },
         'luxury': {
-          gold: '#D4AF37',
-          'gold-light': '#E6C866',
-          'gold-dark': '#B8941F',
-          accent: '#8B5CF6',
-          'accent-light': '#A78BFA',
-          'accent-dark': '#7C3AED',
+          primary: '#4169E1',
+          'primary-light': '#6495ED',
+          'primary-dark': '#1E3A8A',
+          accent: '#FFFFFF',
+          'accent-light': '#F8FAFC',
+          'accent-dark': '#E2E8F0',
         },
         'gradient': {
           'dark-start': '#0f0f0f',
@@ -36,8 +36,8 @@ export default {
       backgroundImage: {
         'luxury-gradient': 'linear-gradient(135deg, #0f0f0f 0%, #1f1f1f 50%, #2f2f2f 100%)',
         'luxury-gradient-reverse': 'linear-gradient(315deg, #0f0f0f 0%, #1f1f1f 50%, #2f2f2f 100%)',
-        'gold-gradient': 'linear-gradient(135deg, #D4AF37 0%, #E6C866 50%, #B8941F 100%)',
-        'accent-gradient': 'linear-gradient(135deg, #8B5CF6 0%, #A78BFA 50%, #7C3AED 100%)',
+        'royal-gradient': 'linear-gradient(135deg, #4169E1 0%, #6495ED 50%, #1E3A8A 100%)',
+        'accent-gradient': 'linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #E2E8F0 100%)',
       },
       animation: {
         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
@@ -69,8 +69,8 @@ export default {
           '100%': { opacity: '1', transform: 'scale(1)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)' },
-          '100%': { boxShadow: '0 0 30px rgba(212, 175, 55, 0.6)' },
+          '0%': { boxShadow: '0 0 20px rgba(65, 105, 225, 0.3)' },
+          '100%': { boxShadow: '0 0 30px rgba(65, 105, 225, 0.6)' },
         },
       },
     },

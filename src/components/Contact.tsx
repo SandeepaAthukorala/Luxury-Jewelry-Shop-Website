@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { MessageCircle, Instagram, Facebook, Twitter, MapPin, Clock, Phone } from 'lucide-react';
+import { MessageCircle, MapPin, Clock, Phone } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
 const Contact: React.FC = () => {
   const [isWhatsAppBouncing, setIsWhatsAppBouncing] = useState(false);
-  const whatsappNumber = "1234567890";
+  const whatsappNumber = "94769392773";
   const whatsappMessage = "Hello! I'm interested in your jewelry collection.";
   
-  const socialLinks = [
-    { icon: Instagram, href: "#", label: "Follow us on Instagram", color: "hover:bg-pink-500" },
-    { icon: Facebook, href: "#", label: "Like us on Facebook", color: "hover:bg-blue-600" },
-    { icon: Twitter, href: "#", label: "Follow us on Twitter", color: "hover:bg-blue-400" },
-  ];
+
 
   const handleWhatsAppClick = () => {
     const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
@@ -57,9 +53,9 @@ const Contact: React.FC = () => {
               
               <div className="space-y-6">
                 {[
-                  { icon: MapPin, title: 'Visit Our Showroom', desc: '123 Luxury Lane, Diamond District, NY 10001' },
+                  { icon: MapPin, title: 'Visit Our Showroom', desc: 'Western Jewellers, Kumbukgate Road, Hiripitiya' },
                   { icon: Clock, title: 'Opening Hours', desc: 'Mon-Fri: 10AM-7PM\nSat-Sun: 10AM-6PM' },
-                  { icon: Phone, title: 'Call Us', desc: '+1 (555) 123-4567' }
+                  { icon: Phone, title: 'Call Us', desc: '+94 76 939 2773' }
                 ].map((item, index) => {
                   const IconComponent = item.icon;
                   return (
@@ -94,29 +90,7 @@ const Contact: React.FC = () => {
 
           {/* Social & Additional Info */}
           <ScrollReveal delay={200} className="space-y-8">
-            {/* Social Links */}
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">
-              <h3 className="text-2xl font-bold mb-6 text-[#D4AF37]">Follow Our Journey</h3>
-              <p className="text-white/80 mb-6">
-                Stay updated with our latest collections, behind-the-scenes content, and customer stories
-              </p>
-              
-              <div className="flex gap-4">
-                {socialLinks.map((social, index) => {
-                  const IconComponent = social.icon;
-                  return (
-                    <a
-                      key={index}
-                      href={social.href}
-                      aria-label={social.label}
-                      className={`w-14 h-14 bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:scale-110 active:scale-95 ${social.color} hover:text-white`}
-                    >
-                      <IconComponent className="w-6 h-6" />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+
 
             {/* Services */}
             <div className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/20 hover:bg-white/15 transition-all duration-300 hover:-translate-y-1">

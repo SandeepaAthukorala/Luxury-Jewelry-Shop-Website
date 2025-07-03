@@ -2,11 +2,30 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Gem, Heart, Sparkles, Star } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+import ImageSlideshow from './ImageSlideshow';
 
 const About: React.FC = () => {
+  // Calculate years since 2019
+  const currentYear = new Date().getFullYear();
+  const yearsInBusiness = currentYear - 2019;
+  
+  const aboutImages = [
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186695/IMG_3160_iaeln9.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186695/IMG_3157_kkkdx8.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186693/IMG_3154_rn5nxe.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186693/IMG_3149_hjhana.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186693/IMG_3158_redogv.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186693/IMG_3156_draqm7.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186689/IMG_3155_guyk2x.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186688/IMG_3151_mmbbuh.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186688/IMG_3176_gtbnrw.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186688/IMG_3174_z5qdr1.webp',
+    'https://res.cloudinary.com/devpq4myi/image/upload/v1751186686/IMG_3150_c2xlkm.webp'
+  ];
+
   const stats = [
-    { icon: Award, label: 'Years of Excellence', value: '10+' },
-    { icon: Users, label: 'Happy Customers', value: '5K+' },
+    { icon: Award, label: 'Years of Excellence', value: `${yearsInBusiness}+` },
+    { icon: Users, label: 'Happy Customers', value: '1K+' },
     { icon: Gem, label: 'Unique Pieces', value: '300+' },
     { icon: Heart, label: 'Satisfied Reviews', value: '99%' }
   ];
@@ -15,8 +34,8 @@ const About: React.FC = () => {
     <section id="about" className="py-20 px-4 bg-luxury-gradient-reverse relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-40 h-40 bg-luxury-gold rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-32 h-32 bg-luxury-accent rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-40 h-40 bg-luxury-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
       </div>
       
       <div className="max-w-7xl mx-auto relative">
@@ -31,17 +50,17 @@ const About: React.FC = () => {
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-6 h-6 text-luxury-gold" />
-                <span className="text-luxury-gold font-medium text-sm uppercase tracking-wider">Our Story</span>
+                <Sparkles className="w-6 h-6 text-luxury-primary" />
+                <span className="text-luxury-primary font-medium text-sm uppercase tracking-wider">Our Story</span>
               </div>
-              <h2 className="text-4xl md:text-5xl font-bold text-dark-100 mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Crafting Dreams Into
-                <span className="block bg-gold-gradient bg-clip-text text-transparent">Timeless Beauty</span>
+                <span className="block bg-royal-gradient bg-clip-text text-transparent">Timeless Beauty</span>
               </h2>
-              <p className="text-lg text-dark-200 leading-relaxed mb-6">
-                Since 2014, we have been dedicated to creating extraordinary jewelry pieces and timepieces that tell your unique story. Each piece is meticulously handcrafted by our master artisans using the finest materials and time-honored techniques.
+              <p className="text-lg text-white leading-relaxed mb-6">
+                Since 2019, we have been dedicated to creating extraordinary jewelry pieces and timepieces that tell your unique story. Each piece is meticulously handcrafted by our master artisans using the finest materials and time-honored techniques.
               </p>
-              <p className="text-lg text-dark-200 leading-relaxed">
+              <p className="text-lg text-white leading-relaxed">
                 From engagement rings that mark life's most precious moments to luxury watches and statement pieces that express your individual style, we believe that jewelry should be as unique as the person wearing it.
               </p>
             </motion.div>
@@ -59,7 +78,7 @@ const About: React.FC = () => {
                 return (
                   <motion.div
                     key={index}
-                    className="glass-luxury p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-luxury-gold/20 text-center group border border-luxury-gold/20"
+                    className="glass-luxury p-6 rounded-2xl shadow-lg hover:shadow-2xl hover:shadow-luxury-primary/20 text-center group border border-luxury-primary/20"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -70,19 +89,19 @@ const About: React.FC = () => {
                     viewport={{ once: true }}
                   >
                     <motion.div 
-                      className="inline-flex items-center justify-center w-12 h-12 bg-gold-gradient rounded-full mb-4 shadow-lg"
+                      className="inline-flex items-center justify-center w-12 h-12 bg-royal-gradient rounded-full mb-4 shadow-lg"
                       whileHover={{ 
                         scale: 1.1,
                         rotate: 5,
                         transition: { duration: 0.2 }
                       }}
                     >
-                      <IconComponent className="w-6 h-6 text-dark-900" />
+                      <IconComponent className="w-6 h-6 text-white" />
                     </motion.div>
-                    <div className="text-2xl font-bold text-luxury-gold mb-1">
+                    <div className="text-2xl font-bold text-luxury-primary mb-1">
                       {stat.value}
                     </div>
-                    <div className="text-sm text-dark-200">
+                    <div className="text-sm text-white">
                       {stat.label}
                     </div>
                   </motion.div>
@@ -100,24 +119,29 @@ const About: React.FC = () => {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Main Image */}
+              {/* Main Image Slideshow */}
               <motion.div 
-                className="relative rounded-3xl overflow-hidden shadow-2xl group border border-luxury-gold/20"
+                className="relative rounded-3xl overflow-hidden shadow-2xl group border border-luxury-primary/20"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src="https://picsum.photos/600/700?random=about1"
-                  alt="Master craftsman at work"
-                  className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-105"
+                <ImageSlideshow 
+                  images={aboutImages}
+                  autoPlay={true}
+                  interval={4000}
+                  showControls={true}
+                  showDots={false}
+                  className="w-full h-[500px]"
+                  imageClassName="transition-transform duration-700 group-hover:scale-105"
+                  overlay={false}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
-                <div className="absolute inset-0 bg-luxury-gold/5 group-hover:bg-luxury-gold/10 transition-colors duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-luxury-primary/5 group-hover:bg-luxury-primary/10 transition-colors duration-300 pointer-events-none"></div>
               </motion.div>
 
               {/* Floating Card */}
               <motion.div 
-                className="absolute -bottom-8 -left-8 glass-luxury p-6 rounded-2xl shadow-xl max-w-xs border border-luxury-gold/30"
+                className="absolute -bottom-6 -left-6 glass-luxury p-6 rounded-2xl shadow-xl max-w-xs border border-luxury-primary/30 z-20"
                 initial={{ opacity: 0, y: 20, scale: 0.8 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
@@ -129,28 +153,28 @@ const About: React.FC = () => {
               >
                 <div className="flex items-center gap-4 mb-4">
                   <motion.div 
-                    className="w-12 h-12 bg-gold-gradient rounded-full flex items-center justify-center shadow-lg"
+                    className="w-12 h-12 bg-royal-gradient rounded-full flex items-center justify-center shadow-lg"
                     whileHover={{ 
                       scale: 1.1,
                       rotate: 12,
                       transition: { duration: 0.2 }
                     }}
                   >
-                    <Gem className="w-6 h-6 text-dark-900" />
+                    <Gem className="w-6 h-6 text-white" />
                   </motion.div>
                   <div>
-                    <h4 className="font-bold text-luxury-gold">Master Crafted</h4>
-                    <p className="text-sm text-dark-200">Hand-selected materials</p>
+                    <h4 className="font-bold text-luxury-primary">Master Crafted</h4>
+                    <p className="text-sm text-white">Hand-selected materials</p>
                   </div>
                 </div>
-                <p className="text-sm text-dark-200">
+                <p className="text-sm text-white">
                   Every piece undergoes rigorous quality checks to ensure perfection
                 </p>
               </motion.div>
 
               {/* Decorative Elements */}
               <motion.div 
-                className="absolute -top-6 -right-6 w-24 h-24 border-4 border-luxury-gold/30 rounded-full"
+                className="absolute -top-6 -right-6 w-24 h-24 border-4 border-luxury-primary/30 rounded-full"
                 animate={{ 
                   scale: [1, 1.1, 1],
                   opacity: [0.3, 0.6, 0.3]
@@ -175,7 +199,7 @@ const About: React.FC = () => {
                 }}
               ></motion.div>
               <motion.div
-                className="absolute top-20 -left-4 w-6 h-6 bg-luxury-gold rounded-full"
+                className="absolute top-20 -left-4 w-6 h-6 bg-luxury-primary rounded-full"
                 animate={{ 
                   scale: [0.8, 1.2, 0.8],
                   opacity: [0.3, 0.7, 0.3]
@@ -201,12 +225,12 @@ const About: React.FC = () => {
             className="text-center mb-12"
           >
             <div className="flex items-center justify-center gap-3 mb-4">
-              <Sparkles className="w-6 h-6 text-luxury-gold" />
-              <h3 className="text-3xl font-bold text-dark-100">Our Brand Values</h3>
-              <Sparkles className="w-6 h-6 text-luxury-gold" />
+              <Sparkles className="w-6 h-6 text-luxury-primary" />
+              <h3 className="text-3xl font-bold text-white">Our Brand Values</h3>
+              <Sparkles className="w-6 h-6 text-luxury-primary" />
             </div>
-            <div className="w-24 h-1 bg-gold-gradient mx-auto mb-4 rounded-full"></div>
-            <p className="text-dark-200 max-w-2xl mx-auto">
+            <div className="w-24 h-1 bg-royal-gradient mx-auto mb-4 rounded-full"></div>
+            <p className="text-white max-w-2xl mx-auto">
               Three core promises that define our commitment to excellence
             </p>
           </motion.div>
@@ -231,7 +255,7 @@ const About: React.FC = () => {
             ].map((value, index) => (
               <motion.div 
                 key={index} 
-                className="text-center group glass-luxury p-8 rounded-2xl border border-luxury-gold/20 shadow-lg hover:shadow-luxury-gold/20"
+                className="text-center group glass-luxury p-8 rounded-2xl border border-luxury-primary/20 shadow-lg hover:shadow-luxury-primary/20"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
@@ -244,17 +268,17 @@ const About: React.FC = () => {
                 viewport={{ once: true }}
               >
                 <motion.div 
-                  className="w-16 h-16 bg-gold-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+                  className="w-16 h-16 bg-royal-gradient rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
                   whileHover={{ 
                     scale: 1.1,
                     rotate: 12,
                     transition: { duration: 0.2 }
                   }}
                 >
-                  <value.icon className="w-8 h-8 text-dark-900" />
+                  <value.icon className="w-8 h-8 text-white" />
                 </motion.div>
-                <h4 className="text-xl font-bold text-luxury-gold mb-3">{value.title}</h4>
-                <p className="text-dark-200">{value.description}</p>
+                <h4 className="text-xl font-bold text-luxury-primary mb-3">{value.title}</h4>
+                <p className="text-white">{value.description}</p>
               </motion.div>
             ))}
           </div>

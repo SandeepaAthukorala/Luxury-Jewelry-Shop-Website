@@ -6,7 +6,7 @@ const WhyChooseUs: React.FC = () => {
   const reasons = [
     {
       icon: Award,
-      title: 'Experienced Staff Since 2014',
+      title: 'Experienced Staff Since 2019',
       description: 'Our team brings years of expertise in jewelry and timepiece craftsmanship'
     },
     {
@@ -63,22 +63,22 @@ const WhyChooseUs: React.FC = () => {
           })}
         </div>
 
-        {/* Testimonial Teaser */}
+        {/* Customer Satisfaction */}
         <ScrollReveal delay={500}>
           <div className="mt-16 text-center">
             <div className="inline-block bg-royal-blue/10 rounded-full px-6 py-3 mb-6">
               <p className="text-royal-blue font-semibold">
-                Trusted by customers since 2014
+                Trusted by customers since 2019
               </p>
             </div>
             <p className="text-blue-grey text-lg mb-8 max-w-3xl mx-auto">
               "We've been loyal customers for years. The quality, service and attention to detail is unmatched. Highly recommended for all your jewelry needs!"
             </p>
             <a 
-              href="#testimonials" 
+              href="#contact" 
               className="inline-block bg-royal-blue hover:bg-royal-blue/90 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
             >
-              Read Customer Stories
+              Contact Us
             </a>
           </div>
         </ScrollReveal>
