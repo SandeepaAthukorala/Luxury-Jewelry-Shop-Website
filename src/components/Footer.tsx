@@ -14,8 +14,9 @@ const Footer: React.FC = () => {
 
 
   const contactInfo = [
-    { text: "+94 76 939 2773", href: "tel:+94769392773" },
-    { text: "Western Jewellers, Kumbukgate Road, Hiripitiya", href: "#" },
+    { icon: Phone, text: "+123 456 7890", href: "tel:+1234567890" },
+    { icon: Mail, text: "info@jewelrystore.com", href: "mailto:info@jewelrystore.com" },
+    { icon: MapPin, text: "123 Jewelry Street, City", href: "#" },
   ];
 
   return (
@@ -52,9 +53,10 @@ const Footer: React.FC = () => {
                 <Gem className="w-7 h-7 text-white" />
               </motion.div>
               <div>
-                <h3 className="text-2xl font-bold text-white group-hover:text-luxury-primary transition-colors duration-300">
-                  Western Jewellers
+                <h3 className="text-2xl font-bold text-dark-100 group-hover:text-luxury-gold transition-colors duration-300">
+                  Elegance
                 </h3>
+                <p className="text-sm text-luxury-gold font-medium">Redefined</p>
               </div>
             </motion.div>
             <div className="flex items-center justify-center md:justify-start gap-2 text-white">

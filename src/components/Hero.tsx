@@ -44,9 +44,7 @@ const Hero: React.FC = () => {
           imageClassName="opacity-80"
           overlay={false}
         />
-        {/* Reduced overlay for better image visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-dark-900/90 via-dark-800/80 to-dark-700/70"></div>
       </div>
 
       {/* Floating Decorative Elements */}
@@ -130,9 +128,9 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-                <span className="block text-white mb-2 drop-shadow-2xl text-shadow-strong">Western</span>
-                <span className="block text-blue-500 animate-glow drop-shadow-2xl text-shadow-strong">
-                  Jewellers
+                <span className="block text-dark-100 mb-2">Elegance</span>
+                <span className="block bg-gold-gradient bg-clip-text text-transparent animate-glow">
+                  Redefined
                 </span>
               </h1>
             </motion.div>
@@ -220,13 +218,13 @@ const Hero: React.FC = () => {
               {/* Contact Buttons */}
               <div className="space-y-4 mb-8">
                 <motion.a 
-                  href="tel:+94769392773" 
-                  className="flex items-center justify-center w-full glass-luxury-light hover:bg-white/20 text-white py-4 px-6 rounded-xl transition-all duration-300 group"
+                  href="tel:+1234567890" 
+                  className="flex items-center justify-center w-full glass-luxury-light hover:bg-luxury-gold/20 text-dark-100 py-4 px-6 rounded-xl transition-all duration-300 group"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Phone className="w-5 h-5 mr-3 text-white group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold">Call: +94 76 939 2773</span>
+                  <Phone className="w-5 h-5 mr-3 text-luxury-gold group-hover:scale-110 transition-transform" />
+                  <span className="font-semibold">Call: +123 456 7890</span>
                 </motion.a>
                 
 
