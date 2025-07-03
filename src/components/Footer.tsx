@@ -14,9 +14,9 @@ const Footer: React.FC = () => {
 
 
   const contactInfo = [
-    { icon: Phone, text: "+123 456 7890", href: "tel:+1234567890" },
-    { icon: Mail, text: "info@jewelrystore.com", href: "mailto:info@jewelrystore.com" },
-    { icon: MapPin, text: "123 Jewelry Street, City", href: "#" },
+    { icon: Phone, text: "+94 76 939 2773", href: "tel:+94769392773" },
+    { icon: MapPin, text: "Kumbukgate Road, Hiripitiya, Sri Lanka", href: "https://maps.google.com/?q=Kumbukgate+Road+Hiripitiya+Sri+Lanka" },
+    { icon: Mail, text: "Custom Jewellery Consultations Available", href: "#" },
   ];
 
   return (
@@ -54,15 +54,15 @@ const Footer: React.FC = () => {
               </motion.div>
               <div>
                 <h3 className="text-2xl font-bold text-dark-100 group-hover:text-luxury-gold transition-colors duration-300">
-                  Elegance
+                  Western Jewellers
                 </h3>
-                <p className="text-sm text-luxury-gold font-medium">Redefined</p>
+                <p className="text-sm text-luxury-gold font-medium">Hiripitiya, Sri Lanka</p>
               </div>
             </motion.div>
             <div className="flex items-center justify-center md:justify-start gap-2 text-white">
               <Sparkles className="w-4 h-4 text-luxury-primary" />
               <p className="text-sm">
-                Luxury Jewellery & Timepieces Since 2019
+                Custom Jewellery Designers - Serving Hiripitiya & Sri Lanka Since 2019
               </p>
             </div>
           </motion.div>
@@ -143,7 +143,7 @@ const Footer: React.FC = () => {
             <Sparkles className="w-4 h-4 text-luxury-primary" />
           </div>
           <p className="text-luxury-accent text-xs">
-            Crafting luxury experiences since 2019
+            Premier custom jewellery store in Hiripitiya, Sri Lanka - Engagement rings, gold necklaces & luxury timepieces
           </p>
         </motion.div>
       </div>

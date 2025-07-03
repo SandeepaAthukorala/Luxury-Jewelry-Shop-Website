@@ -2,13 +2,158 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    
+    <!-- 🚀 Performance Optimizations -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Western Jewellers - Luxury Jewelry Collection</title>
-    <meta name="description" content="Discover our exquisite collection of handcrafted jewelry at Western Jewellers, where timeless elegance meets contemporary design. Premium rings, necklaces, earrings, and more.">
-    <meta name="keywords" content="luxury jewelry, handcrafted rings, diamond necklaces, premium earrings, custom jewelry, engagement rings">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- 🔗 Resource Hints for Performance -->
+    <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+    
+    <!-- 📦 Preload Critical Resources -->
+    <link rel="preload" href="/src/index.css" as="style" />
+    <link rel="preload" href="/src/main.tsx" as="script" />
+    
+    <!-- 🌟 Luxury Gold Icon (Replace with your actual path if needed) -->
+    <link rel="icon" href="/icons/wj-gold-icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/wj-touch-icon.png" />
+
+    <!-- 🏷️ SEO & Local Business Optimization -->
+    <title>Western Jewellers Hiripitiya | Custom Jewellery Sri Lanka | Luxury Jewelry Store</title>
+    <meta name="description" content="Western Jewellers in Hiripitiya, Sri Lanka - Expert custom jewellery designers creating bespoke rings, necklaces & luxury timepieces. Visit our Kumbukgate Road showroom for handcrafted jewelry since 2019.">
+    <meta name="keywords" content="Western Jewellers Hiripitiya, custom jewellery Sri Lanka, jewelry store Hiripitiya, bespoke jewelry Sri Lanka, handcrafted rings Hiripitiya, luxury jewelry Sri Lanka, custom engagement rings, jewelry designers Sri Lanka, Kumbukgate Road jewelry, Sri Lankan jewelers" />
+    <meta name="author" content="Western Jewellers" />
+    <meta name="geo.region" content="LK-WP" />
+    <meta name="geo.placename" content="Hiripitiya, Sri Lanka" />
+    <meta name="geo.position" content="6.9271;79.8612" />
+    <meta name="ICBM" content="6.9271, 79.8612" />
+
+    <!-- 🧠 Open Graph for Social Sharing -->
+    <meta property="og:title" content="Western Jewellers Hiripitiya | Custom Jewellery Sri Lanka" />
+    <meta property="og:description" content="Premier custom jewellery designers in Hiripitiya, Sri Lanka. Handcrafted luxury jewelry, bespoke rings, and timepieces since 2019." />
+    <meta property="og:image" content="/cover/wj-og-image.webp" />
+    <meta property="og:url" content="https://westernjewellers.lk/" />
+    <meta property="og:type" content="business.business" />
+    <meta property="og:locale" content="en_LK" />
+    <meta property="business:contact_data:street_address" content="Kumbukgate Road, Hiripitiya" />
+    <meta property="business:contact_data:locality" content="Hiripitiya" />
+    <meta property="business:contact_data:region" content="Western Province" />
+    <meta property="business:contact_data:country_name" content="Sri Lanka" />
+
+    <!-- ✨ Theme color for mobile browsers -->
+    <meta name="theme-color" content="#ffffff" />
+    
+    <!-- 🎯 Performance & Caching Headers -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000" />
+    <meta name="format-detection" content="telephone=no" />
+    
+    <!-- 🔧 Critical CSS Inlining Placeholder -->
+    <style>
+      /* Critical above-the-fold styles */
+      body { margin: 0; font-family: 'Poppins', sans-serif; }
+      .bg-luxury-gradient { background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%); }
+      .min-h-screen { min-height: 100vh; }
+    </style>
+
+    <!-- 📍 Local Business Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "JewelryStore",
+      "name": "Western Jewellers",
+      "description": "Premier custom jewellery designers in Hiripitiya, Sri Lanka, specializing in handcrafted luxury jewelry, bespoke rings, and timepieces since 2019.",
+      "url": "https://westernjewellers.lk",
+      "logo": "https://westernjewellers.lk/icons/wj-gold-icon.svg",
+      "image": "https://westernjewellers.lk/cover/wj-og-image.webp",
+      "telephone": "+94769392773",
+      "email": "info@westernjewellers.lk",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kumbukgate Road",
+        "addressLocality": "Hiripitiya",
+        "addressRegion": "Western Province",
+        "addressCountry": "LK",
+        "postalCode": "10400"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "6.9271",
+        "longitude": "79.8612"
+      },
+      "openingHours": [
+        "Mo-Sa 09:00-18:00",
+        "Su 10:00-16:00"
+      ],
+      "priceRange": "$$-$$$",
+      "currenciesAccepted": "LKR, USD",
+      "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+      "foundingDate": "2019",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Sri Lanka"
+      },
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": "6.9271",
+          "longitude": "79.8612"
+        },
+        "geoRadius": "50000"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Jewelry Collections",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Custom Engagement Rings",
+              "category": "Jewelry"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Handcrafted Necklaces",
+              "category": "Jewelry"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Product",
+              "name": "Luxury Timepieces",
+              "category": "Watch"
+            }
+          }
+        ]
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Custom Jewelry Design",
+          "description": "Bespoke jewelry design services tailored to your preferences"
+        },
+        {
+          "@type": "Offer",
+          "name": "Jewelry Repair Services",
+          "description": "Professional jewelry repair and restoration services"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/westernjewellers",
+        "https://www.instagram.com/westernjewellers"
+      ]
+    }
+    </script>
   </head>
-  <body>
+  <body class="bg-white text-dark-800 font-sans">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

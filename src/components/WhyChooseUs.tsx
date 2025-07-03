@@ -31,7 +31,7 @@ const WhyChooseUs: React.FC = () => {
               Why Choose Us?
             </h2>
             <p className="text-lg text-blue-grey max-w-2xl mx-auto">
-              Discover the difference that makes us your trusted jewelry partner
+              Discover the difference that makes Western Jewellers your trusted jewelry partner
             </p>
           </div>
         </ScrollReveal>
@@ -72,7 +72,7 @@ const WhyChooseUs: React.FC = () => {
               </p>
             </div>
             <p className="text-blue-grey text-lg mb-8 max-w-3xl mx-auto">
-              "We've been loyal customers for years. The quality, service and attention to detail is unmatched. Highly recommended for all your jewelry needs!"
+              "We've been loyal customers of Western Jewellers for years. The quality, service and attention to detail is unmatched. Highly recommended for all your jewelry needs!"
             </p>
             <a 
               href="#contact" 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ImageModal from './ImageModal';
 import ScrollReveal from './ScrollReveal';
+import OptimizedImage from './OptimizedImage';
 import { Search, Sparkles, Filter } from 'lucide-react';
 import { 
   getCategories, 
@@ -39,12 +40,16 @@ const Collection: React.FC = () => {
   // Get images based on selected category and subcategory
   const filteredImages = getImages(selectedCategory, selectedSubcategory);
 
-  const openModal = (imageUrl: string) => {
+  const openModal = (imageUrl: string, index: number) => {
+    const categoryName = getCategoryDisplayName(selectedCategory);
+    const subcategoryName = selectedSubcategory !== 'all' ? getSubcategoryDisplayName(selectedSubcategory) : '';
+    const altText = `${categoryName}${subcategoryName ? ` - ${subcategoryName}` : ''} - Custom jewellery piece ${index + 1} from Western Jewellers Hiripitiya Sri Lanka`;
+    
     setModalImage({
       isOpen: true,
       src: imageUrl,
-      alt: 'Jewelry item',
-      name: ''
+      alt: altText,
+      name: `${categoryName} Item ${index + 1}`
     });
   };
 
@@ -81,13 +86,13 @@ const Collection: React.FC = () => {
             <div className="flex items-center justify-center gap-3 mb-4">
               <Sparkles className="w-8 h-8 text-luxury-primary" />
               <h2 className="text-4xl lg:text-5xl font-bold text-white">
-                Our <span className="bg-royal-gradient bg-clip-text text-transparent">Collections</span>
+                Custom Jewellery <span className="bg-royal-gradient bg-clip-text text-transparent">Gallery Hiripitiya</span>
               </h2>
               <Sparkles className="w-8 h-8 text-luxury-primary" />
             </div>
             <div className="w-24 h-1 bg-royal-gradient mx-auto mb-6 rounded-full"></div>
             <p className="text-lg text-white max-w-2xl mx-auto">
-              Explore our carefully curated selection of luxury jewelry, timepieces, and premium accessories
+              Browse our handcrafted jewellery collection featuring engagement rings, gold necklaces, and luxury timepieces designed in our Hiripitiya workshop, Sri Lanka.
             </p>
           </motion.div>
         </ScrollReveal>
@@ -130,7 +135,7 @@ const Collection: React.FC = () => {
 
             {/* Subcategory Navigation */}
             <AnimatePresence>
-              {categories[selectedCategory]?.subcategories.length > 1 && (
+              {categories[selectedCategory]?.subcategories.length > 2 && (
                 <motion.div 
                   className="flex flex-wrap justify-center gap-2"
                   initial={{ opacity: 0, height: 0 }}
@@ -162,26 +167,7 @@ const Collection: React.FC = () => {
           </motion.div>
         </ScrollReveal>
 
-        {/* Special Label for Gold-Plated */}
-        <AnimatePresence>
-          {selectedCategory === 'Gold-Plated Jewellery' && (
-            <ScrollReveal delay={300}>
-              <motion.div 
-                className="text-center mb-8"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ duration: 0.3 }}
-              >
-                <span className="inline-flex items-center gap-2 glass-luxury px-6 py-3 rounded-full text-sm font-semibold text-luxury-primary border border-luxury-primary/30">
-                  <Sparkles className="w-4 h-4" />
-                  Limited Collection • Coming Soon
-                  <Sparkles className="w-4 h-4" />
-                </span>
-              </motion.div>
-            </ScrollReveal>
-          )}
-        </AnimatePresence>
+
 
         {/* Images Grid */}
         <ScrollReveal delay={400}>
@@ -196,7 +182,7 @@ const Collection: React.FC = () => {
                 <motion.div
                   key={`${selectedCategory}-${selectedSubcategory}-${index}`}
                   className="group relative glass-luxury rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-luxury-primary/20 cursor-pointer"
-                  onClick={() => openModal(imageUrl)}
+                  onClick={() => openModal(imageUrl, index)}
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -214,11 +200,12 @@ const Collection: React.FC = () => {
                 >
                   {/* Image */}
                   <div className="aspect-square overflow-hidden relative">
-                    <img
+                    <OptimizedImage
                       src={imageUrl}
-                      alt={`Item ${index + 1}`}
+                      alt={`${getCategoryDisplayName(selectedCategory)}${selectedSubcategory !== 'all' ? ` - ${getSubcategoryDisplayName(selectedSubcategory)}` : ''} - Custom jewellery piece ${index + 1} from Western Jewellers Hiripitiya Sri Lanka`}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      loading="lazy"
+                      priority={index < 6}
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     />
                     
                     {/* Gradient Overlay */}

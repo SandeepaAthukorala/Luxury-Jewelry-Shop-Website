@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { X } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -72,10 +73,12 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
         {/* Image */}
         <div className="relative">
-          <img
+          <OptimizedImage
             src={src}
             alt={alt}
             className="w-full h-auto max-h-[80vh] object-contain"
+            priority={true}
+            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 80vw, 70vw"
           />
           
           {/* No product name overlay anymore */}

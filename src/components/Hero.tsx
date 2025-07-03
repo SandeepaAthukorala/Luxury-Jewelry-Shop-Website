@@ -128,33 +128,36 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight">
-                <span className="block text-dark-100 mb-2">Elegance</span>
-                <span className="block bg-gold-gradient bg-clip-text text-transparent animate-glow">
-                  Redefined
+                <span className="block text-dark-100 mb-2">Western</span>
+                <span className="block bg-gradient-to-r from-[#4169E1] via-blue-300 to-[#4169E1] bg-clip-text text-transparent font-extrabold animate-shimmer drop-shadow-md">
+                  Jewellers
+                </span>
+                <span className="block text-base md:text-lg text-luxury-accent font-normal mt-2 tracking-normal">
+                  Hiripitiya, Sri Lanka
                 </span>
               </h1>
             </motion.div>
           </ScrollReveal>
           
           <ScrollReveal delay={200}>
-            <motion.p 
-              className="text-2xl md:text-3xl text-white mb-6 font-medium tracking-wide drop-shadow-2xl text-shadow-strong"
+            <motion.h2 
+              className="text-xl md:text-2xl text-white mb-6 font-medium tracking-wide drop-shadow-2xl text-shadow-strong"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
             >
-              Jewellery & Timepieces Since 2019
-            </motion.p>
+              Custom Jewellery Designers - Handcrafted Luxury Since 2019
+            </motion.h2>
           </ScrollReveal>
           
           <ScrollReveal delay={400}>
             <motion.p 
-              className="text-xl text-white mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed drop-shadow-2xl text-shadow-strong bg-black/30 p-4 rounded-xl backdrop-blur-sm"
+              className="text-lg text-white mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed drop-shadow-2xl text-shadow-strong bg-black/30 p-4 rounded-xl backdrop-blur-sm"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
             >
-              Discover our exquisite collection of handcrafted jewelry and luxury timepieces, where timeless elegance meets contemporary design in perfect harmony.
+              Premier custom jewellery store in Hiripitiya, Sri Lanka. Specializing in bespoke engagement rings, handcrafted necklaces, and luxury timepieces. Visit our Kumbukgate Road showroom for personalized jewelry design services.
             </motion.p>
           </ScrollReveal>
 
@@ -218,13 +221,13 @@ const Hero: React.FC = () => {
               {/* Contact Buttons */}
               <div className="space-y-4 mb-8">
                 <motion.a 
-                  href="tel:+1234567890" 
+                  href="tel:+94769392773" 
                   className="flex items-center justify-center w-full glass-luxury-light hover:bg-luxury-gold/20 text-dark-100 py-4 px-6 rounded-xl transition-all duration-300 group"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                 >
                   <Phone className="w-5 h-5 mr-3 text-luxury-gold group-hover:scale-110 transition-transform" />
-                  <span className="font-semibold">Call: +123 456 7890</span>
+                  <span className="font-semibold">Call: +94 76 939 2773</span>
                 </motion.a>
                 
 

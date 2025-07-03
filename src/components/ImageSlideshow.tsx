@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 interface ImageSlideshowProps {
   images: string[];
@@ -69,16 +70,22 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({
       onMouseLeave={handleMouseLeave}
     >
       <AnimatePresence mode="wait">
-        <motion.img
+        <motion.div
           key={currentIndex}
-          src={images[currentIndex]}
-          alt={`Slide ${currentIndex + 1}`}
-          className={`w-full h-full object-cover ${imageClassName}`}
+          className="w-full h-full"
           initial={{ opacity: 0, scale: 1.1 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
-        />
+        >
+          <OptimizedImage
+            src={images[currentIndex]}
+            alt={`Slide ${currentIndex + 1}`}
+            className={`w-full h-full ${imageClassName}`}
+            priority={currentIndex === 0}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
+          />
+        </motion.div>
       </AnimatePresence>
 
       {overlay && (

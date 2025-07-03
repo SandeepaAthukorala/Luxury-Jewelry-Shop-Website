@@ -7,26 +7,26 @@ const Services: React.FC = () => {
   const services = [
     {
       icon: Wrench,
-      title: 'Gold & Silver Repairs',
-      description: 'Expert restoration and repair services for your precious jewelry with meticulous attention to detail',
+      title: 'Gold & Silver Jewellery Repairs',
+      description: 'Professional restoration services for gold chains, silver rings, and precious jewellery in our Hiripitiya workshop with same-day service available',
       color: 'luxury-primary'
     },
     {
       icon: Watch,
-      title: 'Watch Repairs',
-      description: 'Professional timepiece maintenance and repair by certified technicians using premium tools',
+      title: 'Luxury Watch Repair Services',
+      description: 'Certified watch repair and maintenance for all brands in Sri Lanka. Battery replacement, movement servicing, and water resistance testing',
       color: 'luxury-accent'
     },
     {
       icon: Sparkles,
-      title: 'Custom Jewellery Orders',
-      description: 'Bespoke jewelry design and creation tailored to your unique vision and personal style',
+      title: 'Custom Jewellery Design',
+      description: 'Bespoke engagement rings, wedding bands, and custom necklaces designed and crafted in Hiripitiya using traditional Sri Lankan techniques',
       color: 'luxury-primary'
     },
     {
       icon: Heart,
-      title: 'Customer Satisfaction',
-      description: 'Your happiness is our commitment with guaranteed quality service and lifetime support',
+      title: 'Local Customer Service',
+      description: 'Personalized service for Hiripitiya residents with home consultations, free estimates, and lifetime warranty on custom pieces',
       color: 'luxury-accent'
     }
   ];
@@ -65,16 +65,16 @@ const Services: React.FC = () => {
             </div>
             
             <h2 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-              Our <span className="bg-royal-gradient bg-clip-text text-transparent">Services</span>
+              Professional Jewellery <span className="bg-royal-gradient bg-clip-text text-transparent">Services in Hiripitiya</span>
             </h2>
             
             <div className="w-24 h-1 bg-royal-gradient rounded-full mx-auto mb-6"></div>
             
             <p className="text-2xl text-luxury-primary mb-4 font-medium">
-              Excellence Since 2019
+              Trusted Custom Jewellery Services Since 2019
             </p>
             <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
-              Professional jewelry and timepiece services delivered with unmatched expertise and precision
+              Expert jewellery repair, custom design, and watch services in Hiripitiya, Sri Lanka. Visit our Kumbukgate Road showroom for professional consultation.
             </p>
           </motion.div>
         </ScrollReveal>
@@ -133,10 +133,10 @@ const Services: React.FC = () => {
           >
             <div className="glass-luxury rounded-3xl p-12 max-w-4xl mx-auto">
               <h3 className="text-3xl font-bold text-white mb-4">
-                Ready to Experience Premium Service?
+                Visit Our Hiripitiya Showroom Today
               </h3>
               <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                Contact us today for a personalized consultation and discover how we can bring your jewelry vision to life
+                Located on Kumbukgate Road, Hiripitiya. Get expert consultation for custom jewellery design, repairs, and luxury timepieces in Sri Lanka.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">

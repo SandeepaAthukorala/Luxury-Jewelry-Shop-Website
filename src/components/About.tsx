@@ -54,14 +54,14 @@ const About: React.FC = () => {
                 <span className="text-luxury-primary font-medium text-sm uppercase tracking-wider">Our Story</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Crafting Dreams Into
-                <span className="block bg-royal-gradient bg-clip-text text-transparent">Timeless Beauty</span>
+                Premier Custom Jewellery Store in
+                <span className="block bg-royal-gradient bg-clip-text text-transparent">Hiripitiya, Sri Lanka</span>
               </h2>
               <p className="text-lg text-white leading-relaxed mb-6">
-                Since 2019, we have been dedicated to creating extraordinary jewelry pieces and timepieces that tell your unique story. Each piece is meticulously handcrafted by our master artisans using the finest materials and time-honored techniques.
+                Located in the heart of Hiripitiya, Sri Lanka, Western Jewellers has been the trusted destination for custom jewellery design since 2019. Our skilled artisans specialize in creating bespoke engagement rings, handcrafted necklaces, and luxury timepieces using traditional Sri Lankan craftsmanship combined with modern techniques.
               </p>
               <p className="text-lg text-white leading-relaxed">
-                From engagement rings that mark life's most precious moments to luxury watches and statement pieces that express your individual style, we believe that jewelry should be as unique as the person wearing it.
+                Visit our showroom on Kumbukgate Road to explore our extensive collection of gold jewellery, diamond rings, and custom-designed pieces. We serve customers throughout Hiripitiya and surrounding areas with personalized jewelry services, repairs, and consultations.
               </p>
             </motion.div>
 
@@ -163,12 +163,12 @@ const About: React.FC = () => {
                     <Gem className="w-6 h-6 text-white" />
                   </motion.div>
                   <div>
-                    <h4 className="font-bold text-luxury-primary">Master Crafted</h4>
-                    <p className="text-sm text-white">Hand-selected materials</p>
+                    <h3 className="font-bold text-luxury-primary">Master Crafted in Sri Lanka</h3>
+                    <p className="text-sm text-white">Locally sourced premium materials</p>
                   </div>
                 </div>
                 <p className="text-sm text-white">
-                  Every piece undergoes rigorous quality checks to ensure perfection
+                  Each custom jewellery piece is quality-tested in our Hiripitiya workshop to meet international standards
                 </p>
               </motion.div>
 
@@ -226,7 +226,7 @@ const About: React.FC = () => {
           >
             <div className="flex items-center justify-center gap-3 mb-4">
               <Sparkles className="w-6 h-6 text-luxury-primary" />
-              <h3 className="text-3xl font-bold text-white">Our Brand Values</h3>
+              <h3 className="text-3xl font-bold text-white">Western Jewellers Brand Values</h3>
               <Sparkles className="w-6 h-6 text-luxury-primary" />
             </div>
             <div className="w-24 h-1 bg-royal-gradient mx-auto mb-4 rounded-full"></div>
