@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Sparkles, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
 import ImageSlideshow from './ImageSlideshow';
+import ImageModal from './ImageModal';
 
 const Hero: React.FC = () => {
+  const [modalImage, setModalImage] = useState<{ src: string; alt: string; name: string; clickPosition?: { x: number; y: number } } | null>(null);
+  
   const heroImages = [
     'https://res.cloudinary.com/devpq4myi/image/upload/v1751186714/IMG_3153_i3b43h.webp',
     'https://res.cloudinary.com/devpq4myi/image/upload/v1751186713/IMG_3146_yxa5vn.webp',
@@ -30,6 +33,20 @@ const Hero: React.FC = () => {
     window.open(url, '_blank');
   };
 
+  const handleImageClick = (src: string, alt?: string, name?: string, event?: MouseEvent) => {
+    const clickPosition = event ? { x: event.clientX, y: event.clientY } : undefined;
+    setModalImage({ 
+      src, 
+      alt: alt || 'Hero Image', 
+      name: name || 'Western Jewellers',
+      clickPosition 
+    });
+  };
+
+  const closeModal = () => {
+    setModalImage(null);
+  };
+
   return (
     <section id="hero" className="relative min-h-[85vh] bg-black overflow-hidden pt-20">
       {/* Enhanced Background Slideshow - More Visible */}
@@ -40,9 +57,10 @@ const Hero: React.FC = () => {
           interval={5000}
           showControls={true}
           showDots={true}
-          className="w-full h-full"
-          imageClassName="opacity-80"
+          className="w-full h-full cursor-pointer"
+          imageClassName="opacity-80 hover:opacity-90 transition-opacity duration-300"
           overlay={false}
+          onImageClick={handleImageClick}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-dark-900/90 via-dark-800/80 to-dark-700/70"></div>
       </div>
@@ -254,6 +272,18 @@ const Hero: React.FC = () => {
           </ScrollReveal>
         </div>
       </div>
+      
+      {/* Image Modal for Hero Images */}
+      {modalImage && (
+        <ImageModal
+          isOpen={!!modalImage}
+          src={modalImage.src}
+          alt={modalImage.alt}
+          name={modalImage.name}
+          clickPosition={modalImage.clickPosition}
+          onClose={closeModal}
+        />
+      )}
     </section>
   );
 };

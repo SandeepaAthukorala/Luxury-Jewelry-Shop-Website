@@ -20,6 +20,7 @@ const Collection: React.FC = () => {
     src: string;
     alt: string;
     name: string;
+    clickPosition?: { x: number; y: number };
   }>({
     isOpen: false,
     src: '',
@@ -40,16 +41,37 @@ const Collection: React.FC = () => {
   // Get images based on selected category and subcategory
   const filteredImages = getImages(selectedCategory, selectedSubcategory);
 
-  const openModal = (imageUrl: string, index: number) => {
+  const openModal = (imageUrl: string, index: number, event?: React.MouseEvent) => {
+    const clickPosition = event ? { x: event.clientX, y: event.clientY } : undefined;
     const categoryName = getCategoryDisplayName(selectedCategory);
     const subcategoryName = selectedSubcategory !== 'all' ? getSubcategoryDisplayName(selectedSubcategory) : '';
     const altText = `${categoryName}${subcategoryName ? ` - ${subcategoryName}` : ''} - Custom jewellery piece ${index + 1} from Western Jewellers Hiripitiya Sri Lanka`;
     
+    // For local images, properly encode the URL
+    const getOptimizedUrl = (originalSrc: string) => {
+      // Only optimize Cloudinary URLs, return local images as-is but properly encoded
+      if (originalSrc.includes('cloudinary.com')) {
+        const parts = originalSrc.split('/upload/');
+        if (parts.length === 2) {
+          return `${parts[0]}/upload/f_webp,q_auto,w_1200,dpr_auto,c_scale/${parts[1]}`;
+        }
+      }
+      
+      // For local images, properly encode each path segment
+      const fullEncoded = originalSrc.split('/').map(segment => {
+        if (segment === '') return segment;
+        return encodeURIComponent(segment);
+      }).join('/');
+      
+      return fullEncoded;
+    };
+    
     setModalImage({
       isOpen: true,
-      src: imageUrl,
+      src: getOptimizedUrl(imageUrl),
       alt: altText,
-      name: `${categoryName} Item ${index + 1}`
+      name: `${categoryName} Item ${index + 1}`,
+      clickPosition
     });
   };
 
@@ -182,7 +204,7 @@ const Collection: React.FC = () => {
                 <motion.div
                   key={`${selectedCategory}-${selectedSubcategory}-${index}`}
                   className="group relative glass-luxury rounded-xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-luxury-primary/20 cursor-pointer"
-                  onClick={() => openModal(imageUrl, index)}
+                  onClick={(event) => openModal(imageUrl, index, event)}
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: -20 }}
@@ -267,6 +289,7 @@ const Collection: React.FC = () => {
         src={modalImage.src}
         alt={modalImage.alt}
         name={modalImage.name}
+        clickPosition={modalImage.clickPosition}
       />
     </section>
   );

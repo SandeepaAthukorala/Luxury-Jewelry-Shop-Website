@@ -1,13 +1,46 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Gem, Heart, Sparkles, Star } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 import ImageSlideshow from './ImageSlideshow';
+import ImageModal from './ImageModal';
 
 const About: React.FC = () => {
   // Calculate years since 2019
   const currentYear = new Date().getFullYear();
   const yearsInBusiness = currentYear - 2019;
+  
+  // Modal state for full-screen image viewing
+  const [modalImage, setModalImage] = useState<{
+    isOpen: boolean;
+    src: string;
+    alt: string;
+    name: string;
+  }>({
+    isOpen: false,
+    src: '',
+    alt: '',
+    name: ''
+  });
+  
+  // Modal handlers
+  const openModal = (src: string, alt: string = 'About Us Image', name: string = 'Western Jewellers') => {
+    setModalImage({
+      isOpen: true,
+      src,
+      alt,
+      name
+    });
+  };
+  
+  const closeModal = () => {
+    setModalImage({
+      isOpen: false,
+      src: '',
+      alt: '',
+      name: ''
+    });
+  };
   
   const aboutImages = [
     'https://res.cloudinary.com/devpq4myi/image/upload/v1751186695/IMG_3160_iaeln9.webp',
@@ -132,8 +165,9 @@ const About: React.FC = () => {
                   showControls={true}
                   showDots={false}
                   className="w-full h-[500px]"
-                  imageClassName="transition-transform duration-700 group-hover:scale-105"
+                  imageClassName="transition-transform duration-700 group-hover:scale-105 cursor-pointer"
                   overlay={false}
+                  onImageClick={openModal}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent pointer-events-none"></div>
                 <div className="absolute inset-0 bg-luxury-primary/5 group-hover:bg-luxury-primary/10 transition-colors duration-300 pointer-events-none"></div>
@@ -284,6 +318,15 @@ const About: React.FC = () => {
           </div>
         </ScrollReveal>
       </div>
+      
+      {/* Image Modal */}
+      <ImageModal
+        isOpen={modalImage.isOpen}
+        onClose={closeModal}
+        src={modalImage.src}
+        alt={modalImage.alt}
+        name={modalImage.name}
+      />
     </section>
   );
 };

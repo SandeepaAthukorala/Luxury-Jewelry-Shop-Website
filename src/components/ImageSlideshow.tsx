@@ -13,6 +13,7 @@ interface ImageSlideshowProps {
   imageClassName?: string;
   overlay?: boolean;
   overlayOpacity?: number;
+  onImageClick?: (src: string, alt?: string, name?: string, event?: MouseEvent) => void;
 }
 
 const ImageSlideshow: React.FC<ImageSlideshowProps> = ({
@@ -24,7 +25,8 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({
   className = '',
   imageClassName = '',
   overlay = false,
-  overlayOpacity = 0.3
+  overlayOpacity = 0.3,
+  onImageClick
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(autoPlay);
@@ -77,6 +79,20 @@ const ImageSlideshow: React.FC<ImageSlideshowProps> = ({
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, ease: "easeInOut" }}
+          onClick={(event) => {
+            // For local images, just return the original URL
+            const getOptimizedUrl = (originalSrc: string) => {
+              // Only optimize Cloudinary URLs, return local images as-is
+              if (originalSrc.includes('cloudinary.com')) {
+                const parts = originalSrc.split('/upload/');
+                if (parts.length === 2) {
+                  return `${parts[0]}/upload/f_webp,q_auto,w_1200,dpr_auto,c_scale/${parts[1]}`;
+                }
+              }
+              return originalSrc;
+            };
+            onImageClick?.(getOptimizedUrl(images[currentIndex]), `Slide ${currentIndex + 1}`, 'Western Jewellers', event.nativeEvent);
+          }}
         >
           <OptimizedImage
             src={images[currentIndex]}
