@@ -18,6 +18,17 @@ const ImageModal: React.FC<ImageModalProps> = ({
   name,
   clickPosition 
 }) => {
+  const handleClose = () => {
+    onClose();
+    // Scroll to gallery section after modal closes
+    setTimeout(() => {
+      const collectionSection = document.getElementById('collection');
+      if (collectionSection) {
+        collectionSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100); // Small delay to ensure modal is closed first
+  };
+
   useEffect(() => {
     if (isOpen) {
       // Scroll to top of page when modal opens
@@ -26,7 +37,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
       // Add keyboard event listener for ESC key
       const handleKeyDown = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
-          onClose();
+          handleClose();
         }
       };
       
@@ -177,7 +188,7 @@ const ImageModal: React.FC<ImageModalProps> = ({
   return (
     <div 
       className="image-modal-overlay" 
-      onClick={onClose}
+      onClick={handleClose}
       style={{
         position: 'fixed',
         top: 0,
@@ -213,7 +224,7 @@ style={{
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
-        <button className="image-modal-close" onClick={onClose} aria-label="Close image modal">
+        <button className="image-modal-close" onClick={handleClose} aria-label="Close image modal">
           ×
         </button>
         
