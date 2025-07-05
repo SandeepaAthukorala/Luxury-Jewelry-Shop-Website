@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 
 interface ImageModalProps {
@@ -18,19 +18,21 @@ const ImageModal: React.FC<ImageModalProps> = ({
   name,
   clickPosition 
 }) => {
+  const savedScrollPosition = useRef<number>(0);
+
   const handleClose = () => {
     onClose();
-    // Scroll to gallery section after modal closes
+    // Restore original scroll position after modal closes
     setTimeout(() => {
-      const collectionSection = document.getElementById('collection');
-      if (collectionSection) {
-        collectionSection.scrollIntoView({ behavior: 'smooth' });
-      }
+      window.scrollTo({ top: savedScrollPosition.current, behavior: 'smooth' });
     }, 100); // Small delay to ensure modal is closed first
   };
 
   useEffect(() => {
     if (isOpen) {
+      // Save current scroll position before opening modal
+      savedScrollPosition.current = window.pageYOffset || document.documentElement.scrollTop;
+      
       // Scroll to top of page when modal opens
       window.scrollTo({ top: 0, behavior: 'smooth' });
       

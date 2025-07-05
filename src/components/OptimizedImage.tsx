@@ -69,7 +69,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         }
       },
       {
-        rootMargin: '50px'
+        rootMargin: '200px'
       }
     );
 
