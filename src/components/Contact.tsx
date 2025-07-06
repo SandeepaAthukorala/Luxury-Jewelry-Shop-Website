@@ -53,8 +53,8 @@ const Contact: React.FC = () => {
               
               <div className="space-y-6">
                 {[
-                  { icon: MapPin, title: 'Visit Our Showroom', desc: 'Western Jewellers, Kumbukgate Road, Hiripitiya' },
-                  { icon: Clock, title: 'Opening Hours', desc: 'Mon-Fri: 10AM-7PM\nSat-Sun: 10AM-6PM' },
+                  { icon: MapPin, title: 'Visit Our Showroom', desc: 'Western Jewellers, Kumbukgate Road, Hiripitiya, Nikadhalupotha' },
+                  { icon: Clock, title: 'Opening Hours', desc: 'Mon–Sat: 9 AM – 7 PM\nSunday: 9 AM – 7:30 PM' },
                   { icon: Phone, title: 'Call Us', desc: '+94 76 939 2773' }
                 ].map((item, index) => {
                   const IconComponent = item.icon;

@@ -231,7 +231,7 @@ const Hero: React.FC = () => {
                 <div className="text-center text-luxury-accent group-hover:text-white transition-colors duration-300">
                   <MapPin className="w-16 h-16 mx-auto mb-3 opacity-80 group-hover:opacity-100" />
                   <p className="text-lg font-semibold mb-1">Visit Our Store</p>
-                  <p className="text-sm opacity-80">Western Jewellers, Kumbukgate Road, Hiripitiya</p>
+                  <p className="text-sm opacity-80">Western Jewellers, Kumbukgate Road, Hiripitiya, Nikadhalupotha</p>
                   <p className="text-xs opacity-60 mt-2">Click to view directions</p>
                 </div>
               </motion.div>

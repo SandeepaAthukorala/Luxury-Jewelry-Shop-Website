@@ -136,7 +136,7 @@ const Services: React.FC = () => {
                 Visit Our Hiripitiya Showroom Today
               </h3>
               <p className="text-xl text-white mb-8 max-w-2xl mx-auto">
-                Located on Kumbukgate Road, Hiripitiya. Get expert consultation for custom jewellery design, repairs, and luxury timepieces in Sri Lanka.
+                Located on Kumbukgate Road, Hiripitiya, Nikadhalupotha. Get expert consultation for custom jewellery design, repairs, and luxury timepieces in Sri Lanka.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6 justify-center">

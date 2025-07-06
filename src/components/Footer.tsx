@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
 
   const contactInfo = [
     { icon: Phone, text: "+94 76 939 2773", href: "tel:+94769392773" },
-    { icon: MapPin, text: "Kumbukgate Road, Hiripitiya, Sri Lanka", href: "https://maps.google.com/?q=Kumbukgate+Road+Hiripitiya+Sri+Lanka" },
+    { icon: MapPin, text: "Western Jewellers, Kumbukgate Road, Hiripitiya, Nikadhalupotha", href: "https://maps.google.com/?q=Western+Jewellers+Kumbukgate+Road+Hiripitiya+Nikadhalupotha" },
     { icon: Mail, text: "Custom Jewellery Consultations Available", href: "#" },
   ];
 
