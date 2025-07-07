@@ -1,7 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import HeroSlideshow from './components/HeroSlideshow';
+
 import Collection from './components/Collection';
 import BackToTop from './components/BackToTop';
 import LazySection from './components/LazySection';
@@ -20,18 +20,19 @@ function App() {
 
   return (
     <div className="min-h-screen bg-luxury-gradient text-dark-100">
+      <LazySection>
+        <About />
+      </LazySection>
       <Navbar />
-      <Hero />
-      <HeroSlideshow />
+
+      <section id="hero-section">
+        <Hero />
+      </section>
       <Collection />
       
       {/* Lazy loaded sections for better performance */}
       <LazySection>
         <Services />
-      </LazySection>
-      
-      <LazySection>
-        <About />
       </LazySection>
       
       <LazySection>

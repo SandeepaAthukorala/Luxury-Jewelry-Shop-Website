@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Sparkles, Clock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import ScrollReveal from './ScrollReveal';
-import ImageSlideshow from './ImageSlideshow';
+
 import ImageModal from './ImageModal';
 
 const Hero: React.FC = () => {
@@ -48,97 +48,18 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="hero" className="relative min-h-[85vh] bg-black overflow-hidden pt-20">
-      {/* Enhanced Background Slideshow - More Visible */}
-      <div className="absolute inset-0">
-        <ImageSlideshow 
-          images={heroImages}
-          autoPlay={true}
-          interval={5000}
-          showControls={true}
-          showDots={true}
-          className="w-full h-full cursor-pointer"
-          imageClassName="opacity-80 hover:opacity-90 transition-opacity duration-300"
-          overlay={false}
-          onImageClick={handleImageClick}
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-dark-900/90 via-dark-800/80 to-dark-700/70"></div>
-      </div>
-
-      {/* Floating Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <motion.div 
-          className="absolute top-20 left-10 w-32 h-32 border-2 border-white/40 rounded-full"
-          animate={{ 
-            rotate: 360,
-            scale: [1, 1.1, 1],
-            opacity: [0.4, 0.7, 0.4]
-          }}
-          transition={{ 
-            duration: 8, 
-            repeat: Infinity, 
-            ease: "linear" 
-          }}
-        />
-        <motion.div 
-          className="absolute bottom-32 right-16 w-24 h-24 border-2 border-luxury-accent/50 rounded-full"
-          animate={{ 
-            rotate: -360,
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 0.8, 0.5]
-          }}
-          transition={{ 
-            duration: 6, 
-            repeat: Infinity, 
-            ease: "linear",
-            delay: 1
-          }}
-        />
-        <motion.div 
-          className="absolute top-1/2 left-1/4 w-16 h-16 border-2 border-white/50 rotate-45"
-          animate={{ 
-            rotate: [45, 225, 45],
-            opacity: [0.4, 0.9, 0.4]
-          }}
-          transition={{ 
-            duration: 4, 
-            repeat: Infinity, 
-            ease: "easeInOut",
-            delay: 2
-          }}
-        />
-        
-        {/* Floating Sparkles */}
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              left: `${20 + i * 15}%`,
-              top: `${30 + i * 10}%`,
-            }}
-            animate={{
-              y: [-20, 20, -20],
-              opacity: [0, 1, 0],
-              scale: [0.5, 1, 0.5],
-            }}
-            transition={{
-              duration: 3 + i * 0.5,
-              repeat: Infinity,
-              delay: i * 0.8,
-            }}
-          >
-            <Sparkles className="w-4 h-4 text-white" />
-          </motion.div>
-        ))}
+    <section id="hero" className="relative min-h-[85vh] bg-luxury-gradient overflow-hidden pt-20">
+      {/* Luxury Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-40 h-40 bg-luxury-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10 min-h-[70vh] flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto py-6">
 
         {/* Left side - Hero content with enhanced visibility */}
         <div className="flex-1 text-center lg:text-left mb-12 lg:mb-0 lg:pr-12">
-          {/* Content background for better readability */}
-          <div className="absolute top-0 left-0 w-full max-w-xl h-full bg-black/20 backdrop-blur-sm rounded-3xl -z-10 mx-auto"></div>
+
           <ScrollReveal>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -170,7 +91,7 @@ const Hero: React.FC = () => {
           
           <ScrollReveal delay={400}>
             <motion.p 
-              className="text-lg text-white mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed drop-shadow-2xl text-shadow-strong bg-black/30 p-4 rounded-xl backdrop-blur-sm"
+              className="text-lg text-white mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.6 }}
@@ -260,11 +181,11 @@ const Hero: React.FC = () => {
                 <div className="space-y-1 text-luxury-accent">
                   <p className="flex justify-between">
                     <span>Mon - Sat:</span>
-                    <span className="text-white font-medium">10AM - 8PM</span>
+                    <span className="text-white font-medium">9AM - 7PM</span>
                   </p>
                   <p className="flex justify-between">
                     <span>Sunday:</span>
-                    <span className="text-white font-medium">12PM - 6PM</span>
+                    <span className="text-white font-medium">9AM - 7:30PM</span>
                   </p>
                 </div>
               </div>

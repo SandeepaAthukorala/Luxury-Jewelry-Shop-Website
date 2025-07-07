@@ -24,10 +24,10 @@ const Navbar: React.FC = () => {
   };
 
   const navItems = [
-    { label: 'Home', id: 'hero' },
+    { label: 'About', id: 'about' },
+    { label: 'Home', id: 'hero-section' },
     { label: 'Collections', id: 'collection' },
-    { label: 'Services', id: 'services' },
-    { label: 'About', id: 'about' }
+    { label: 'Services', id: 'services' }
   ];
 
   return (

@@ -19,6 +19,20 @@ const Footer: React.FC = () => {
     { icon: Mail, text: "Custom Jewellery Consultations Available", href: "#" },
   ];
 
+  const navItems = [
+    { label: 'About', id: 'about' },
+    { label: 'Home', id: 'hero-section' },
+    { label: 'Collections', id: 'collection' },
+    { label: 'Services', id: 'services' }
+  ];
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-luxury-gradient-reverse relative overflow-hidden">
       {/* Background Pattern */}
@@ -67,7 +81,7 @@ const Footer: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* WhatsApp Section */}
+          {/* Quick Links */}
           <motion.div 
             className="text-center"
             initial={{ opacity: 0, y: 30 }}
@@ -77,20 +91,21 @@ const Footer: React.FC = () => {
           >
             <div className="flex items-center justify-center gap-2 mb-6">
               <Sparkles className="w-5 h-5 text-luxury-primary" />
-              <h4 className="text-lg font-semibold text-luxury-primary">Get in Touch</h4>
+              <h4 className="text-lg font-semibold text-luxury-primary">Quick Links</h4>
               <Sparkles className="w-5 h-5 text-luxury-primary" />
             </div>
-            
-            {/* WhatsApp Button */}
-            <motion.button
-              onClick={handleWhatsAppClick}
-              className="btn-luxury inline-flex items-center gap-2 text-sm"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <MessageCircle className="w-4 h-4" />
-              Chat on WhatsApp
-            </motion.button>
+            <div className="flex flex-col items-center space-y-2">
+              {navItems.map((item) => (
+                <motion.button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-white hover:text-luxury-primary transition-colors duration-300"
+                  whileHover={{ x: 5 }}
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </div>
           </motion.div>
 
           {/* Contact Info */}

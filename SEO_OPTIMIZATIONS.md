@@ -16,7 +16,7 @@ Comprehensive SEO optimization focusing on local keywords: "Hiripitiya", "Sri La
 - **JewelryStore** specific schema
 - **Address**: Kumbukgate Road, Hiripitiya, Sri Lanka
 - **Contact Information**: Phone, geo-coordinates
-- **Opening Hours**: Monday-Saturday 9:00-18:00
+- **Opening Hours**: Monday-Saturday 9:00-19:00, Sunday 9:00-19:30
 - **Services**: Custom jewelry design, repairs, consultations
 - **Payment Methods**: Cash, cards, bank transfers
 - **Social Media**: Facebook, Instagram, WhatsApp

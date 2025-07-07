@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Gem, Heart, Sparkles, Star } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+
 import ImageSlideshow from './ImageSlideshow';
 import ImageModal from './ImageModal';
 
@@ -74,17 +75,86 @@ const About: React.FC = () => {
       <div className="max-w-7xl mx-auto relative">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
-          {/* Left Content */}
-          <ScrollReveal className="space-y-8">
+          {/* Left Content - Slideshow */}
+          <ScrollReveal delay={100} className="relative">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="relative"
+            >
+              {/* Main Image Slideshow */}
+              <motion.div 
+                className="relative rounded-3xl overflow-hidden shadow-2xl group border border-luxury-primary/20"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ImageSlideshow 
+                  images={aboutImages}
+                  autoPlay={true}
+                  interval={4000}
+                  showControls={true}
+                  showDots={false}
+                  className="w-full aspect-[4/3]"
+                  imageClassName="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 cursor-pointer"
+                  overlay={false}
+                  onImageClick={openModal}
+                />
+              </motion.div>
+
+              {/* Decorative Elements */}
+              <motion.div 
+                className="absolute -top-6 -right-6 w-24 h-24 border-4 border-luxury-primary/30 rounded-full"
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{ 
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              ></motion.div>
+              <motion.div 
+                className="absolute top-1/2 -right-4 w-8 h-8 bg-luxury-accent rounded-full"
+                animate={{ 
+                  y: [-10, 10, -10],
+                  opacity: [0.4, 0.8, 0.4]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 1
+                }}
+              ></motion.div>
+              <motion.div
+                className="absolute top-20 -left-4 w-6 h-6 bg-luxury-primary rounded-full"
+                animate={{ 
+                  scale: [0.8, 1.2, 0.8],
+                  opacity: [0.3, 0.7, 0.3]
+                }}
+                transition={{ 
+                  duration: 2.5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5
+                }}
+              ></motion.div>
+            </motion.div>
+          </ScrollReveal>
+
+          {/* Right Content - Text and Stats */}
+          <ScrollReveal delay={200} className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
               <div className="flex items-center gap-2 mb-4">
-                <Sparkles className="w-6 h-6 text-luxury-primary" />
-                <span className="text-luxury-primary font-medium text-sm uppercase tracking-wider">Our Story</span>
+
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
                 Premier Custom Jewellery Store in
@@ -93,9 +163,38 @@ const About: React.FC = () => {
               <p className="text-lg text-white leading-relaxed mb-6">
                 Located in the heart of Hiripitiya, Sri Lanka, Western Jewellers has been the trusted destination for custom jewellery design since 2019. Our skilled artisans specialize in creating bespoke engagement rings, handcrafted necklaces, and luxury timepieces using traditional Sri Lankan craftsmanship combined with modern techniques.
               </p>
-              <p className="text-lg text-white leading-relaxed">
+              <p className="text-lg text-white leading-relaxed mb-6">
                 Visit our showroom on Kumbukgate Road to explore our extensive collection of gold jewellery, diamond rings, and custom-designed pieces. We serve customers throughout Hiripitiya and surrounding areas with personalized jewelry services, repairs, and consultations.
               </p>
+              
+              <div className="flex items-center gap-3 mb-6">
+                <Gem className="w-6 h-6 text-luxury-primary" />
+                <h3 className="text-2xl font-bold text-white">Master Crafted in Sri Lanka</h3>
+              </div>
+              
+              <div className="space-y-4">
+                <motion.div 
+                  className="flex items-center gap-3 text-white"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-2 h-2 bg-luxury-primary rounded-full"></div>
+                  <span>Locally sourced premium materials</span>
+                </motion.div>
+                
+                <motion.div 
+                  className="flex items-center gap-3 text-white"
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="w-2 h-2 bg-luxury-primary rounded-full"></div>
+                  <span>Each custom jewellery piece is quality-tested in our Hiripitiya workshop to meet international standards</span>
+                </motion.div>
+              </div>
             </motion.div>
 
             {/* Stats Grid */}
@@ -140,111 +239,6 @@ const About: React.FC = () => {
                   </motion.div>
                 );
               })}
-            </motion.div>
-          </ScrollReveal>
-
-          {/* Right Content - Images */}
-          <ScrollReveal delay={200} className="relative">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              {/* Main Image Slideshow */}
-              <motion.div 
-                className="relative rounded-3xl overflow-hidden shadow-2xl group border border-luxury-primary/20"
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-              >
-                <ImageSlideshow 
-                  images={aboutImages}
-                  autoPlay={true}
-                  interval={4000}
-                  showControls={true}
-                  showDots={false}
-                  className="w-full h-[500px]"
-                  imageClassName="transition-transform duration-700 group-hover:scale-105 cursor-pointer"
-                  overlay={false}
-                  onImageClick={openModal}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent pointer-events-none"></div>
-                <div className="absolute inset-0 bg-luxury-primary/5 group-hover:bg-luxury-primary/10 transition-colors duration-300 pointer-events-none"></div>
-              </motion.div>
-
-              {/* Floating Card */}
-              <motion.div 
-                className="absolute -bottom-6 -left-6 glass-luxury p-6 rounded-2xl shadow-xl max-w-xs border border-luxury-primary/30 z-20"
-                initial={{ opacity: 0, y: 20, scale: 0.8 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                whileHover={{ 
-                  y: -5,
-                  transition: { duration: 0.2 }
-                }}
-                viewport={{ once: true }}
-              >
-                <div className="flex items-center gap-4 mb-4">
-                  <motion.div 
-                    className="w-12 h-12 bg-royal-gradient rounded-full flex items-center justify-center shadow-lg"
-                    whileHover={{ 
-                      scale: 1.1,
-                      rotate: 12,
-                      transition: { duration: 0.2 }
-                    }}
-                  >
-                    <Gem className="w-6 h-6 text-white" />
-                  </motion.div>
-                  <div>
-                    <h3 className="font-bold text-luxury-primary">Master Crafted in Sri Lanka</h3>
-                    <p className="text-sm text-white">Locally sourced premium materials</p>
-                  </div>
-                </div>
-                <p className="text-sm text-white">
-                  Each custom jewellery piece is quality-tested in our Hiripitiya workshop to meet international standards
-                </p>
-              </motion.div>
-
-              {/* Decorative Elements */}
-              <motion.div 
-                className="absolute -top-6 -right-6 w-24 h-24 border-4 border-luxury-primary/30 rounded-full"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                  opacity: [0.3, 0.6, 0.3]
-                }}
-                transition={{ 
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              ></motion.div>
-              <motion.div 
-                className="absolute top-1/2 -right-4 w-8 h-8 bg-luxury-accent rounded-full"
-                animate={{ 
-                  y: [-10, 10, -10],
-                  opacity: [0.4, 0.8, 0.4]
-                }}
-                transition={{ 
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 1
-                }}
-              ></motion.div>
-              <motion.div
-                className="absolute top-20 -left-4 w-6 h-6 bg-luxury-primary rounded-full"
-                animate={{ 
-                  scale: [0.8, 1.2, 0.8],
-                  opacity: [0.3, 0.7, 0.3]
-                }}
-                transition={{ 
-                  duration: 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.5
-                }}
-              ></motion.div>
             </motion.div>
           </ScrollReveal>
         </div>

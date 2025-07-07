@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import OptimizedImage from './OptimizedImage';
 
 interface ImageSlideshowProps {
   images: string[];
@@ -12,171 +11,87 @@ interface ImageSlideshowProps {
   className?: string;
   imageClassName?: string;
   overlay?: boolean;
-  overlayOpacity?: number;
-  onImageClick?: (src: string, alt?: string, name?: string, event?: MouseEvent) => void;
+  onImageClick?: (src: string) => void;
 }
 
 const ImageSlideshow: React.FC<ImageSlideshowProps> = ({
   images,
   autoPlay = true,
-  interval = 4000,
+  interval = 5000,
   showControls = true,
   showDots = true,
   className = '',
   imageClassName = '',
   overlay = false,
-  overlayOpacity = 0.3,
-  onImageClick
+  onImageClick,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(autoPlay);
 
-  useEffect(() => {
-    if (!isPlaying || images.length <= 1) return;
-
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, interval);
-
-    return () => clearInterval(timer);
-  }, [currentIndex, isPlaying, images.length, interval]);
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const goToNext = () => {
+  const nextSlide = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
-  const handleMouseEnter = () => {
-    if (autoPlay) setIsPlaying(false);
+  const prevSlide = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
-  const handleMouseLeave = () => {
-    if (autoPlay) setIsPlaying(true);
-  };
+  useEffect(() => {
+    if (!autoPlay) return;
+    const slideInterval = setInterval(nextSlide, interval);
+    return () => clearInterval(slideInterval);
+  }, [autoPlay, interval, images.length]);
 
-  if (images.length === 0) return null;
+  const handleImageClick = () => {
+    if (onImageClick) {
+      onImageClick(images[currentIndex]);
+    }
+  };
 
   return (
-    <div 
-      className={`relative overflow-hidden ${className}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <AnimatePresence mode="wait">
-        <motion.div
+    <div className={`relative w-full h-full ${className}`}>
+      <AnimatePresence initial={false}>
+        <motion.img
           key={currentIndex}
-          className="w-full h-full"
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-          onClick={(event) => {
-            // For local images, just return the original URL
-            const getOptimizedUrl = (originalSrc: string) => {
-              // Only optimize Cloudinary URLs, return local images as-is
-              if (originalSrc.includes('cloudinary.com')) {
-                const parts = originalSrc.split('/upload/');
-                if (parts.length === 2) {
-                  return `${parts[0]}/upload/f_webp,q_auto,w_1200,dpr_auto,c_scale/${parts[1]}`;
-                }
-              }
-              return originalSrc;
-            };
-            onImageClick?.(getOptimizedUrl(images[currentIndex]), `Slide ${currentIndex + 1}`, 'Western Jewellers', event.nativeEvent);
-          }}
-        >
-          <OptimizedImage
-            src={images[currentIndex]}
-            alt={`Slide ${currentIndex + 1}`}
-            className={`w-full h-full ${imageClassName}`}
-            priority={currentIndex === 0}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-          />
-        </motion.div>
+          src={images[currentIndex]}
+          alt={`Slide ${currentIndex + 1}`}
+          className={`w-full h-full object-cover aspect-[4/3] ${imageClassName}`}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+          onClick={handleImageClick}
+        />
       </AnimatePresence>
 
-      {overlay && (
-        <div 
-          className="absolute inset-0 bg-black transition-opacity duration-300"
-          style={{ opacity: overlayOpacity }}
-        />
-      )}
+      {overlay && <div className="absolute inset-0 bg-black bg-opacity-30"></div>}
 
-      {/* Navigation Controls */}
-      {showControls && images.length > 1 && (
+      {showControls && (
         <>
-          <motion.button
-            onClick={goToPrevious}
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-luxury-primary/80 hover:bg-luxury-primary text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 z-10 shadow-2xl border border-white/20"
-            whileHover={{ scale: 1.15, boxShadow: "0 0 30px rgba(65, 105, 225, 0.6)" }}
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
+          <button
+            onClick={prevSlide}
+            className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity z-10"
           >
-            <ChevronLeft className="w-6 h-6" />
-          </motion.button>
-
-          <motion.button
-            onClick={goToNext}
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-luxury-primary/80 hover:bg-luxury-primary text-white p-4 rounded-full backdrop-blur-md transition-all duration-300 z-10 shadow-2xl border border-white/20"
-            whileHover={{ scale: 1.15, boxShadow: "0 0 30px rgba(65, 105, 225, 0.6)" }}
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-75 transition-opacity z-10"
           >
-            <ChevronRight className="w-6 h-6" />
-          </motion.button>
+            <ChevronRight size={24} />
+          </button>
         </>
       )}
 
-      {/* Dot Indicators */}
-      {showDots && images.length > 1 && (
-        <motion.div 
-          className="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-10 bg-black/40 px-4 py-2 rounded-full backdrop-blur-md"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-        >
+      {showDots && (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-10">
           {images.map((_, index) => (
-            <motion.button
+            <button
               key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
-                index === currentIndex 
-                  ? 'bg-luxury-primary border-white scale-125 shadow-lg' 
-                  : 'bg-white/30 border-white/50 hover:bg-white/60 hover:border-white'
-              }`}
-              whileHover={{ scale: 1.3 }}
-              whileTap={{ scale: 0.9 }}
-            />
+              onClick={() => setCurrentIndex(index)}
+              className={`w-3 h-3 rounded-full transition-colors ${currentIndex === index ? 'bg-white' : 'bg-gray-400'}`}
+            ></button>
           ))}
-        </motion.div>
-      )}
-
-      {/* Progress Bar */}
-      {autoPlay && isPlaying && images.length > 1 && (
-        <motion.div 
-          className="absolute bottom-0 left-0 h-1 bg-luxury-primary z-10"
-          initial={{ width: '0%' }}
-          animate={{ width: '100%' }}
-          transition={{ 
-            duration: interval / 1000, 
-            ease: "linear",
-            repeat: Infinity
-          }}
-          key={currentIndex}
-        />
+        </div>
       )}
     </div>
   );
