@@ -6,8 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:production": "vite build && npm run purge:cache",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "purge:cache": "node scripts/purge-cloudflare-cache.js",
+    "purge:cache:ps": "powershell -ExecutionPolicy Bypass -File scripts/purge-cloudflare-cache.ps1",
+    "deploy": "npm run build && npm run purge:cache",
+    "deploy:verify": "npm run build && npm run preview"
   },
   "dependencies": {
     "@fontsource/poppins": "^5.2.6",
