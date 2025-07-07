@@ -144,8 +144,11 @@ const Hero: React.FC = () => {
               </div>
               
               {/* Interactive Map Placeholder */}
-              <motion.div 
-                className="glass-luxury-light rounded-2xl mb-8 h-52 flex items-center justify-center border border-dark-500/30 group cursor-pointer"
+              <motion.a 
+                href="https://www.google.com/maps/place/Western+Jewellers/@7.2858163,79.8209372,10z/data=!4m10!1m2!2m1!1swestern+jewellers!3m6!1s0x3ae335000c409c69:0x96a5cadbf7b9a20!8m2!3d7.6565781!4d80.3699541!15sChF3ZXN0ZXJuIGpld2VsbGVyc5IBDWpld2Vscnlfc3RvcmWqAToQATIfEAEiG_P_zDOsci4cLp1ZVfTnJxDukPyosFxv_KUDejIVEAIiEXdlc3Rlcm4gamV3ZWxsZXJz4AEA!16s%2Fg%2F11xlb5ycc8?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="glass-luxury-light rounded-2xl mb-8 h-52 flex items-center justify-center border border-dark-500/30 group cursor-pointer block"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
@@ -155,7 +158,7 @@ const Hero: React.FC = () => {
                   <p className="text-sm opacity-80">Western Jewellers, Kumbukgate Road, Hiripitiya, Nikadhalupotha</p>
                   <p className="text-xs opacity-60 mt-2">Click to view directions</p>
                 </div>
-              </motion.div>
+              </motion.a>
 
               {/* Contact Buttons */}
               <div className="space-y-4 mb-8">
