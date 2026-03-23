@@ -36,6 +36,21 @@
   animation: shimmer 3s linear infinite;
 }
 
+/* Luxury skeleton loader — branded shimmer placeholder for images */
+.skeleton-loader {
+  background: linear-gradient(
+    110deg,
+    #1a1a1a 0%,
+    #1a1a1a 30%,
+    #2a2a3a 42%,
+    #1e2540 50%,
+    #2a2a3a 58%,
+    #1a1a1a 70%,
+    #1a1a1a 100%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+}
 
 /* Custom text shadow utilities for better readability */
 @layer utilities {
@@ -168,18 +183,7 @@ textarea:focus-visible {
   @apply bg-luxury-primary/30 text-luxury-primary;
 }
 
-/* Loading animation for images */
-@keyframes shimmer {
-  0% {
-    background-position: -200px 0;
-  }
-  100% {
-    background-position: calc(200px + 100%) 0;
-  }
-}
-
+/* Legacy shimmer class — kept for backward compat */
 .shimmer {
-  background: linear-gradient(90deg, #2a2a2a 0px, #3a3a3a 40px, #2a2a2a 80px);
-  background-size: 200px 100%;
-  animation: shimmer 1.5s infinite;
+  @apply skeleton-loader;
 }

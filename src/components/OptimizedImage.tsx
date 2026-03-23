@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface OptimizedImageProps {
   src: string;
@@ -7,7 +7,6 @@ interface OptimizedImageProps {
   className?: string;
   sizes?: string;
   priority?: boolean;
-  placeholder?: string;
   onLoad?: () => void;
   onError?: () => void;
 }
@@ -18,20 +17,18 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   className = '',
   sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
   priority = false,
-  placeholder = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PC9zdmc+',
   onLoad,
   onError
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
   const [hasError, setHasError] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
   // Convert Cloudinary URL to WebP with optimizations
   const getOptimizedSrc = (originalSrc: string) => {
     if (originalSrc.includes('cloudinary.com')) {
-      // Extract the base URL and add optimization parameters
       const parts = originalSrc.split('/upload/');
       if (parts.length === 2) {
         return `${parts[0]}/upload/f_webp,q_auto,w_auto,dpr_auto,c_scale/${parts[1]}`;
@@ -73,8 +70,8 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
       }
     );
 
-    if (imgRef.current) {
-      observerRef.current.observe(imgRef.current);
+    if (containerRef.current) {
+      observerRef.current.observe(containerRef.current);
     }
 
     return () => {
@@ -96,18 +93,38 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const srcSet = getSrcSet(src);
 
   return (
-    <div className={`relative overflow-hidden ${className}`} ref={imgRef}>
-      {/* Placeholder */}
-      {!isLoaded && !hasError && (
-        <motion.img
-          src={placeholder}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover blur-sm"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: isLoaded ? 0 : 1 }}
-          transition={{ duration: 0.3 }}
-        />
-      )}
+    <div className={`relative overflow-hidden ${className}`} ref={containerRef}>
+      {/* Skeleton shimmer placeholder */}
+      <AnimatePresence>
+        {!isLoaded && !hasError && (
+          <motion.div
+            className="absolute inset-0 skeleton-loader"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            aria-hidden="true"
+          >
+            {/* Diamond icon as branded placeholder */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+              <svg
+                className="w-10 h-10 text-dark-500/60"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M6 3h12l4 6-10 13L2 9z" />
+                <path d="M11 3l1 6h8" />
+                <path d="M13 3l-1 6H4" />
+                <path d="M2 9l10 4 10-4" />
+              </svg>
+              <div className="h-1.5 w-16 rounded-full bg-dark-600/40" />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Main Image */}
       {isInView && (
@@ -121,23 +138,29 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           onError={handleError}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, scale: 1.02 }}
+          animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 1.02 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
         />
       )}
 
       {/* Error fallback */}
       {hasError && (
-        <div className="absolute inset-0 flex items-center justify-center bg-gray-200 text-gray-500">
-          <span className="text-sm">Failed to load image</span>
-        </div>
-      )}
-
-      {/* Loading indicator */}
-      {!isLoaded && !hasError && isInView && (
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-luxury-primary border-t-transparent rounded-full animate-spin"></div>
+        <div className="absolute inset-0 flex flex-col items-center justify-center bg-dark-800 gap-2">
+          <svg
+            className="w-8 h-8 text-dark-400"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          <span className="text-xs text-dark-300">Image unavailable</span>
         </div>
       )}
     </div>

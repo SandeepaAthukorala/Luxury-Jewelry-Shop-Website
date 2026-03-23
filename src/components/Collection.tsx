@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ImageModal from './ImageModal';
 import ScrollReveal from './ScrollReveal';
 import OptimizedImage from './OptimizedImage';
-import { Search, Sparkles, Filter } from 'lucide-react';
+import { Search, Sparkles, Filter, Eye } from 'lucide-react';
 import { 
   getCategories, 
   getSubcategories, 
@@ -208,17 +208,17 @@ const Collection: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.8, y: 20 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.8, y: -20 }}
-                  transition={{ 
-                    duration: 0.4, 
+                  transition={{
+                    duration: 0.4,
                     delay: index * 0.05,
                     type: "spring",
                     stiffness: 100
                   }}
-                  whileHover={{ 
-                    scale: 1.05,
+                  whileHover={{
+                    scale: 1.03,
                     transition: { duration: 0.2 }
                   }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.97 }}
                 >
                   {/* Image */}
                   <div className="aspect-square overflow-hidden relative">
@@ -229,31 +229,33 @@ const Collection: React.FC = () => {
                       priority={index < 6}
                       sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     />
-                    
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                    {/* Gradient Overlay — always visible at bottom for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-dark-900/70 via-dark-900/10 to-transparent transition-opacity duration-300"></div>
                   </div>
-                  
-                  {/* Overlay on hover */}
-                  <motion.div 
-                    className="absolute inset-0 bg-luxury-primary/0 group-hover:bg-luxury-primary/10 transition-all duration-300 flex items-center justify-center"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                  >
-                    <motion.div 
-                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      initial={{ scale: 0.5 }}
-                      whileHover={{ scale: 1 }}
-                      transition={{ duration: 0.2 }}
-                    >
+
+                  {/* Bottom bar with View Details CTA */}
+                  <div className="absolute bottom-0 inset-x-0 p-3 flex items-center justify-between translate-y-0 sm:translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out">
+                    <span className="text-xs font-medium text-white/80 truncate mr-2">
+                      {getCategoryDisplayName(selectedCategory)} #{index + 1}
+                    </span>
+                    <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-royal-gradient text-white shadow-lg shadow-luxury-primary/30 whitespace-nowrap">
+                      <Eye className="w-3.5 h-3.5" />
+                      View Details
+                    </span>
+                  </div>
+
+                  {/* Hover overlay with search icon */}
+                  <div className="absolute inset-0 bg-luxury-primary/0 group-hover:bg-luxury-primary/10 transition-all duration-300 flex items-center justify-center pointer-events-none">
+                    <div className="opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300">
                       <div className="glass-luxury rounded-full p-3 border border-luxury-primary/30">
-                  <Search className="w-6 h-6 text-luxury-primary" />
+                        <Search className="w-6 h-6 text-luxury-primary" />
                       </div>
-                    </motion.div>
-                  </motion.div>
-                  
+                    </div>
+                  </div>
+
                   {/* Luxury Border Effect */}
-                  <div className="absolute inset-0 rounded-xl border border-luxury-primary/20 group-hover:border-luxury-primary/40 transition-colors duration-300"></div>
+                  <div className="absolute inset-0 rounded-xl border border-luxury-primary/20 group-hover:border-luxury-primary/40 transition-colors duration-300 pointer-events-none"></div>
                 </motion.div>
               ))}
             </AnimatePresence>
