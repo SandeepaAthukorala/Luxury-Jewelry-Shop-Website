@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 
 interface OptimizedImageProps {
   src: string;
@@ -84,7 +83,18 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     onLoad?.();
   };
 
-  const handleError = () => {
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    // Try fallback: encode the URL segments and retry (handles &, spaces, etc.)
+    const encodedSrc = src.split('/').map(segment =>
+      segment === '' ? segment : encodeURIComponent(segment)
+    ).join('/');
+
+    if (e.currentTarget.src !== window.location.origin + encodedSrc &&
+        !e.currentTarget.src.includes(encodeURIComponent(encodedSrc))) {
+      e.currentTarget.src = encodedSrc;
+      return;
+    }
+
     setHasError(true);
     onError?.();
   };
@@ -95,52 +105,44 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   return (
     <div className={`relative overflow-hidden ${className}`} ref={containerRef}>
       {/* Skeleton shimmer placeholder */}
-      <AnimatePresence>
-        {!isLoaded && !hasError && (
-          <motion.div
-            className="absolute inset-0 skeleton-loader"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
-            aria-hidden="true"
-          >
-            {/* Diamond icon as branded placeholder */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-              <svg
-                className="w-10 h-10 text-dark-500/60"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M6 3h12l4 6-10 13L2 9z" />
-                <path d="M11 3l1 6h8" />
-                <path d="M13 3l-1 6H4" />
-                <path d="M2 9l10 4 10-4" />
-              </svg>
-              <div className="h-1.5 w-16 rounded-full bg-dark-600/40" />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {!isLoaded && !hasError && (
+        <div
+          className="absolute inset-0 skeleton-loader"
+          aria-hidden="true"
+        >
+          {/* Diamond icon as branded placeholder */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
+            <svg
+              className="w-10 h-10 text-dark-500/60"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M6 3h12l4 6-10 13L2 9z" />
+              <path d="M11 3l1 6h8" />
+              <path d="M13 3l-1 6H4" />
+              <path d="M2 9l10 4 10-4" />
+            </svg>
+            <div className="h-1.5 w-16 rounded-full bg-dark-600/40" />
+          </div>
+        </div>
+      )}
 
       {/* Main Image */}
       {isInView && (
-        <motion.img
+        <img
           src={optimizedSrc}
           srcSet={srcSet}
           sizes={sizes}
           alt={alt}
-          className={`w-full h-full ${className.includes('object-contain') ? 'object-contain' : 'object-cover'}`}
+          className={`w-full h-full ${className.includes('object-contain') ? 'object-contain' : 'object-cover'} transition-opacity duration-500 ease-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
           onLoad={handleLoad}
           onError={handleError}
           loading={priority ? 'eager' : 'lazy'}
           decoding="async"
-          initial={{ opacity: 0, scale: 1.02 }}
-          animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 1.02 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
         />
       )}
 
